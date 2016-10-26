@@ -27,31 +27,18 @@ public class loginServlet extends HttpServlet {
     @Override
 	public void init(ServletConfig config) throws ServletException {
 		this.config = config;
-	}/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request,response);
+		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombre = request.getParameter("User");
-		String pass = request.getParameter("Pass");
-		String pagina = "";
-		if(nombre.equals("prueba@a") && pass.equals("1234")){
-			pagina="/perfilusuario.jsp";
-			String p = "prueba";
-			request.setAttribute("nombre", p);
-			request.setAttribute("email", "a@b.c");
-		}else{
-			pagina="/error.jsp";
-		}
-		config.getServletContext().getRequestDispatcher(pagina).forward(request,response);
+		
+		
+		config.getServletContext().getRequestDispatcher("").forward(request,response);
 	}
 
 }
