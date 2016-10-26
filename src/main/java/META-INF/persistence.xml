@@ -3,6 +3,7 @@
 	<persistence-unit name="wallapoptiw" transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>jdbc/tiw</jta-data-source>
+		<class>es.uc3m.tiw.wallapop.dominios.Usuario</class>
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE"/>
 			<property name="javax.persistence.schema-generation.database.action" value="create"/>

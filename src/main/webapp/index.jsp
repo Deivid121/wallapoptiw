@@ -87,13 +87,13 @@
                      placeholder="Introduce tu email">
               <label class="sr-only" for="ejemplo_password_2">Contraseña</label>
               <input type="password" class="form-control" name="Pass" 
-                     placeholder="Contraseña">
+                     placeholder="Contrase�a">
               <input type="submit" class="btn btn-default" value="Entrar"></input>
               <a href="perfilusuario.html">Entrar</a>
             </div>
           </form>
       </li>
-      <li><a href="registro.html">Registrarse</a></li>
+      <li><a href="registro.jsp">Registrarse</a></li>
     </ul>
   </div>
 </nav>
