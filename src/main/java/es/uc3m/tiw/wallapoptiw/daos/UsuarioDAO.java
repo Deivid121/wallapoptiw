@@ -23,4 +23,8 @@ public interface UsuarioDAO {
 	public abstract void setTransaction(UserTransaction ut);
 
 	public abstract void setConexion(EntityManager em);
+
+	public abstract Usuario buscarUsuario(String user, String pass)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 }

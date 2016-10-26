@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -22,6 +23,25 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 		ut.begin();
 		em.persist(nuevoUsuario);
 		ut.commit();
+		//em.flush();
+	}
+	
+	@Override
+	public Usuario buscarUsuario(String user, String pass) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		
+		Query consulta= em.createQuery("select u from Usuario u where u.email =:email and u.password =:pass",Usuario.class);	
+		consulta.setParameter("email", user);
+		consulta.setParameter("pass", pass);
+		if(consulta.getResultList().isEmpty()){
+			return null;
+		}
+		else{
+			Usuario usuario=(Usuario)consulta.getResultList().get(0);
+			return usuario;
+		}
+		
+
+
 		//em.flush();
 	}
 	@Override
