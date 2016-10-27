@@ -14,7 +14,8 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FilterLogin
  */
-@WebFilter("/perfilusuario.jsp")
+@WebFilter(
+		urlPatterns= {"/perfilusuario.jsp","/crearProducto.jsp","/editarUsuario.jsp","/MostrarProductos.jsp"})
 public class FilterLogin implements Filter {
 
     /**

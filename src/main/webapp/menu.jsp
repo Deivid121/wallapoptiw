@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<nav class="navbar navbar-default" role="navigation">
+<nav id=nav class="navbar navbar-default" role="navigation">
 	<!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
 	<div class="navbar-header">
@@ -16,7 +16,7 @@
 
 	<!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
-	<div class="collapse navbar-collapse navbar-ex1-collapse">
+	<div id=topNavElement class="collapse navbar-collapse navbar-ex1-collapse">
 		<form class="navbar-form navbar-left" role="search">
 			<div class="form-group ">
 				<input type="text" class="form-control"
