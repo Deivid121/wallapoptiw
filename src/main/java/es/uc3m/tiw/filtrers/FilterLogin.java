@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FilterLogin
  */
-@WebFilter("/*")
+@WebFilter("/perfilusuario.jsp")
 public class FilterLogin implements Filter {
 
     /**
@@ -38,7 +38,7 @@ public class FilterLogin implements Filter {
 
 		HttpSession sesion =  ((HttpServletRequest)request).getSession(); 
 		//buscamos el token de autenticacion
-		if (sesion.getAttribute("autenticado")!=null &&(boolean)sesion.getAttribute("logeado")==true) { 
+		if (sesion.getAttribute("logeado")!=null &&(boolean)sesion.getAttribute("logeado")==true) { 
 			
 			chain.doFilter(request, response); 
 		}else{
