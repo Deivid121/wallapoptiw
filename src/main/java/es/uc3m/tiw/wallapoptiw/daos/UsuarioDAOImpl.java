@@ -64,6 +64,13 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 	
 	
 	}
+	@Override
+	public void eliminarUsuario (Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		
+		ut.begin();
+		em.remove(em.merge(user));
+		ut.commit();
+	}
 	
 	
 	
