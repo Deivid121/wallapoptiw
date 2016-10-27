@@ -9,6 +9,7 @@ import es.uc3m.tiw.wallapop.dominios.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
@@ -25,6 +26,11 @@ public interface AdminDAO {
 	Administrador buscarAdministrador(String email, String pass)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+	Collection<Usuario> buscarUsuarios() throws SQLException, NotSupportedException, SystemException, SecurityException,
+			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+	Usuario recuperarUsuarioPorClave(int pk) throws SQLException;
 
 
 	
