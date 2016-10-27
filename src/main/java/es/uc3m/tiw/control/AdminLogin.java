@@ -55,8 +55,8 @@ public class AdminLogin extends HttpServlet {
 		
 		HttpSession sesion = request.getSession();
 
-		String email=request.getParameter("email");
-		String pass=request.getParameter("password");
+		String email=request.getParameter("User");
+		String pass=request.getParameter("Pass");
 
 
 		if(email.isEmpty()||pass.isEmpty()){
@@ -65,20 +65,20 @@ public class AdminLogin extends HttpServlet {
 			try {
 				Administrador admin= dao.buscarAdministrador(email, pass);
 				if(admin==null){
-					config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+					config.getServletContext().getRequestDispatcher("/AdminLogin.jsp").forward(request,response);
 				}
 				else{
 				
 					if(admin.getEmail().isEmpty() && admin.getPassword().isEmpty()){
 						
 						sesion.setAttribute("logeado", false);
-						config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+						config.getServletContext().getRequestDispatcher("/AdminLogin.jsp").forward(request,response);
 					}
 					else{
 						
 						sesion.setAttribute("logeado", true);
 						sesion.setAttribute("admin", admin);
-						config.getServletContext().getRequestDispatcher("/perfilusuario.jsp").forward(request,response);
+						config.getServletContext().getRequestDispatcher("/PanelAdmin.jsp").forward(request,response);
 				}
 					
 				}
