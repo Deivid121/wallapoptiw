@@ -63,7 +63,7 @@ public class BorrarUsuarioAdmin extends HttpServlet {
 		try {
 			Usuario user = dao.recuperarUsuarioPorClave(Integer.parseInt(id));
 			dao.eliminarUsuario(user);
-			config.getServletContext().getRequestDispatcher("/PanelAdmin.jsp").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/AdminPanel").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
