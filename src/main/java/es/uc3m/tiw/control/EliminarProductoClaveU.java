@@ -73,7 +73,7 @@ public class EliminarProductoClaveU extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		config.getServletContext().getRequestDispatcher("/AdminPanel").forward(request, response);
+		config.getServletContext().getRequestDispatcher("/MisProductos").forward(request, response);
 	}
 
 }
