@@ -48,109 +48,34 @@
 
 			<div class="col-xs-12 col-sm-12">
 				<div class="row">
-					<div class="col-xs-12 col-lg-4">
-						<h2>Heading</h2>
-						<img src="cirujano.jpg" alt="prueba" class="img-rounded">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-							aute irure dolor in reprehenderit in voluptate velit esse cillum
-							dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit
-							anim id est laborum.</p>
+					<c:forEach items="${productos}" var="producto"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
+<div class="col-xs-12 col-lg-4">
+<div class="ProductCase">
+			<div class="Description">
+			
+						<h2>${producto.titulo }</h2>
+						<img class=ProductoImage src = "./imagenes/${producto.imagen }">
+						<p>${producto.descripcion }</p>
+						<p>Categoria:${producto.categoria }</p>
 						<p>
+							<a href="#">Precio:${producto.precio }</a>
+						</p>
+						<p>
+							<a href="#">Vendedor:${producto.usuario }</a>
+						</p>
+						<p>
+			</div>
+						<div id="Details" >
 							<a class="btn btn-default" href="#" role="button">View
 								details &raquo;</a>
+						</div>
+							
 						</p>
+						</div>
 					</div>
+			</c:forEach>
+
 					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-12 col-lg-4">
-						<h2>Heading</h2>
-						<img src="cirujano.jpg" alt="prueba" class="img-rounded">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-							aute irure dolor in reprehenderit in voluptate velit esse cillum
-							dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit
-							anim id est laborum.</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-12 col-lg-4">
-						<h2>Heading</h2>
-						<img src="cirujano.jpg" alt="prueba" class="img-rounded">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-							aute irure dolor in reprehenderit in voluptate velit esse cillum
-							dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit
-							anim id est laborum.</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-12 col-lg-4">
-						<h2>Heading</h2>
-						<img src="cirujano.jpg" alt="prueba" class="img-rounded">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-							aute irure dolor in reprehenderit in voluptate velit esse cillum
-							dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit
-							anim id est laborum.</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-12 col-lg-4">
-						<h2>Heading</h2>
-						<img src="cirujano.jpg" alt="prueba" class="img-rounded">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-							aute irure dolor in reprehenderit in voluptate velit esse cillum
-							dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit
-							anim id est laborum.</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-12 col-lg-4">
-						<h2>Heading</h2>
-						<img src="cirujano.jpg" alt="prueba" class="img-rounded">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-							ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-							aute irure dolor in reprehenderit in voluptate velit esse cillum
-							dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit
-							anim id est laborum.</p>
-						<p>
-							<a class="btn btn-default" href="#" role="button">View
-								details &raquo;</a>
-						</p>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
-				</div>
 				<!--/row-->
 			</div>
 			<!--/.col-xs-12.col-sm-9-->
