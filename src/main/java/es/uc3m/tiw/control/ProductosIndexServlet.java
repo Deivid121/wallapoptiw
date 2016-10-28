@@ -64,13 +64,20 @@ public class ProductosIndexServlet extends HttpServlet {
 		try {
 			List<Producto>lista=(List<Producto>)dao.listarProductos();
 			request.setAttribute("productos", lista);
-			config.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			
 			
 		} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 				| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	}
+	private List<Producto> ComprobarDisponibles(List<Producto>lista){
+		
+		return lista;
 	}
 
 }

@@ -84,7 +84,7 @@ public class crearProductoServlet extends HttpServlet {
 		p.setDescripcion(request.getParameter("descripcion"));
 		p.setPrecio(Integer.parseInt(request.getParameter("precio")));
 		Usuario u = (Usuario) sesion.getAttribute("usuario");	
-		p.setEstado(request.getParameter("estado"));
+		p.setEstado("Disponible");
 		p.setUsuario(u.getId());
 		p.setCiudad(u.getCiudad());
 //Recuperar una imagen y guardarla en el servidor
