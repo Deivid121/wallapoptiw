@@ -37,6 +37,6 @@ public abstract Usuario actualizarUsuario(Usuario user) throws SQLException, Not
 void eliminarUsuario(Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException,
 		IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
-Usuario recuperarUnUsuarioNombre(String nombre) throws SQLException;
+Collection<Usuario> recuperarUnUsuarioNombre(String nombre) throws SQLException;
 
 }

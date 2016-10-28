@@ -2,6 +2,7 @@ package es.uc3m.tiw.wallapoptiw.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
@@ -52,10 +53,10 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         
     }
 @Override
-public Usuario recuperarUnUsuarioNombre(String nombre) throws SQLException{
+public Collection<Usuario> recuperarUnUsuarioNombre(String nombre) throws SQLException{
 	Query consulta = em.createQuery("select u from Usuario u where u.nombre=:nb", Usuario.class);
 	consulta.setParameter("nb", nombre);
-	return (Usuario) consulta.getResultList().get(0);        
+	return consulta.getResultList();        
     }
 
 	@Override

@@ -90,6 +90,61 @@ public class ProductoDAOImpl implements ProductoDAO {
 		
 	}
 	@Override
+    public Collection<Producto> buscarProductosAvanzada(String titulo,String ciudad, String categoria, String descripcion, int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+        String con = null;
+        if(titulo != null){
+            if(con == null){
+                con = "p.titulo=:t";
+            }
+        }
+        if(categoria != null){
+            if(con == null){
+                con = "p.categoria=:ct";
+            }else{
+                con = con +" and " + "p.categoria=:ct";
+            }
+        }
+        if(ciudad != null){
+            if(con == null){
+                con = "p.ciudad=:c";
+            }else{
+                con = con +" and " + "p.ciudad=:c";
+            }
+        }
+        if(usuario >= 0){
+            if(con == null){
+                con = "p.usuario=:u";
+            }else{
+                con = con +" and " + "p.usuario=:u";
+            }
+        }
+        if(descripcion != null){
+            if(con == null){
+                con = "p.descripcion=:d";
+            }else{
+                con = con +" and " + "p.descripcion=:d";
+            }
+        }
+        Query consulta = em.createQuery("select p from Producto p where "+con, Producto.class);
+        if(titulo!=null){
+            consulta.setParameter("t", titulo);
+        }
+        if(ciudad!=null){
+            consulta.setParameter("c", ciudad);
+        }
+        if(categoria!=null){
+            consulta.setParameter("ct", categoria);
+        }
+        if(descripcion!=null){
+            consulta.setParameter("d", descripcion);
+        }
+        if(usuario>0){
+            consulta.setParameter("u", usuario);
+        }
+        return  consulta.getResultList();
+        
+    }
+	@Override
 	public Producto actualizarProducto (Producto prod )throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		
 		ut.begin();

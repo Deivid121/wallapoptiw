@@ -57,16 +57,20 @@ public interface ProductoDAO {
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
-<<<<<<< HEAD
+
 	Producto actualizarProducto(Producto prod)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
 
-=======
+
 	Collection<Producto> buscarProductosCiudad(String ciudad)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
->>>>>>> 5574bf028c630ec992262ac00db769785845d534
+	Collection<Producto> buscarProductosAvanzada(String titulo, String ciudad, String categoria, String descripcion,
+			int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException,
+			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+
 }
