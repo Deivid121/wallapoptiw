@@ -69,7 +69,7 @@ public class VerUsuarioAdmin extends HttpServlet {
 		try {
 			Usuario user=dao.recuperarUsuarioPorClave(Integer.parseInt(id));
 			sesion.setAttribute("usuario", user);
-			config.getServletContext().getRequestDispatcher("/perfilusuario.jsp").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/perfilusuarioAdmin.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
