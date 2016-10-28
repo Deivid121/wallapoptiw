@@ -90,6 +90,13 @@ public class ProductoDAOImpl implements ProductoDAO {
 		
 	}
 	@Override
+	public Collection<Producto> buscarProductosEstado(String estado) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		Query consulta = em.createQuery("select p from Producto p where p.estado=:est", Producto.class);
+		consulta.setParameter("est", estado);
+		return  consulta.getResultList();
+		
+	}
+	@Override
     public Collection<Producto> buscarProductosAvanzada(String titulo,String ciudad, String categoria, String descripcion, int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
         String con = null;
         if(titulo != null){

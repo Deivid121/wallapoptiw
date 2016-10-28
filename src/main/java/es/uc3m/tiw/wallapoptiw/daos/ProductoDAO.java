@@ -72,5 +72,9 @@ public interface ProductoDAO {
 			int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException,
 			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
+	Collection<Producto> buscarProductosEstado(String estado)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
 
 }

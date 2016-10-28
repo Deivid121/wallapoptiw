@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.IOException;
 import es.uc3m.tiw.wallapoptiw.daos.AdminDAOImpl;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -62,8 +63,11 @@ public class ProductosIndexServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<Producto>lista=(List<Producto>)dao.listarProductos();
-			request.setAttribute("productos", lista);
+			List<Producto>lista=(List<Producto>)dao.buscarProductosEstado("Disponible");
+			
+				request.setAttribute("productos", lista);
+			
+			
 			
 			
 		} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
@@ -75,9 +79,22 @@ public class ProductosIndexServlet extends HttpServlet {
 		
 		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
-	private List<Producto> ComprobarDisponibles(List<Producto>lista){
+	private static List<Producto> ComprobarDisponibles(List<Producto>lista){
+		List <Producto> disponibles= new ArrayList<Producto>();
+		if(lista == null){
+			return null;
+		}
+		else{
+			for(Producto p: lista){
+				if(p.getEstado().equals("Disponible")){
+					disponibles.add(p);
+			}
+			}
+			return disponibles;
+		}
 		
-		return lista;
+		
+		
 	}
 
 }

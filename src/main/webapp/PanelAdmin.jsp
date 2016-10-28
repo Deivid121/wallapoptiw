@@ -18,7 +18,9 @@
 <body>
 <jsp:include page="menu.jsp" />
 
+
     <table class="table table-hover">
+    <h2>Usuarios del sistema</h2>
         <tr>
             <th>Id</th>
             <th>Nombre</th>
@@ -53,19 +55,22 @@
 	</tr>
 	</c:forEach>
 	
-	
+
 	 <table class="table table-hover">
+	 <h2>Productos del sistema</h2>
 <tr>
 <th>Id</th>
 <th>Titulo</th>
 <th>Categoría</th>
 <th>Descripción</th>
 <th>Precio</th>
-<th>Imagen1</th>
 <th>Imagen</th>
+<th>Estado</th>
 <th>Opciones</th>
 
 </tr>
+
+
 <c:forEach items="${productos}" var="producto"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
 <tr>
 <form>
@@ -74,8 +79,9 @@
 	<td>${producto.categoria }</td>
 	<td>${producto.descripcion }</td>
 	<td>${producto.precio }</td>
-	<td>${producto.imagen }</td>
 	<td><img src = "./imagenes/${producto.imagen }" width ="25" height="25"></td>
+	<td>${producto.estado }</td>
+
 
 
 	
