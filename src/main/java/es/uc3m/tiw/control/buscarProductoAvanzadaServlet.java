@@ -32,13 +32,12 @@ import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
  * Servlet implementation class buscarProductoServlet
  */
 @WebServlet("/buscarProducto")
-public class buscarProductoServlet extends HttpServlet {
+public class buscarProductoAvanzadaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Producto> productos = null;
 	private List<Usuario> usuarios;
 	private ProductoDAO pdao;
 	private UsuarioDAO udao;
-	private String pagina;
 	private ServletConfig config;
 	@PersistenceContext(unitName="wallapoptiw")
     EntityManager em;
@@ -48,11 +47,11 @@ public class buscarProductoServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public buscarProductoServlet() {
+    public buscarProductoAvanzadaServlet() {
         super();
         
     }
-    public void init() throws ServletException {
+    public void init(ServletConfig config) throws ServletException {
     	this.config = config;
    		pdao = new ProductoDAOImpl();
    		pdao.setConexion(em);
@@ -74,11 +73,29 @@ public class buscarProductoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String titulo = request.getParameter("titulo");
-		String categoria = request.getParameter("categoria");
-		String descripcion = request.getParameter("descripcion");
-		String ciudad = request.getParameter("ciudad");
-		String usuario = request.getParameter("usuario");
+		String titulo = null;
+		String categoria = null;
+		String descripcion = null;
+		String ciudad = null;
+		String usuario = null;
+		productos = null;
+		
+		if(!request.getParameter("titulo").equals("") && request.getParameter("titulo") != null ){
+			titulo = request.getParameter("titulo");
+		}
+		if(!request.getParameter("categoria").equals("") && request.getParameter("categoria") != null){
+			categoria = request.getParameter("categoria");
+		}
+		if(!request.getParameter("descripcion").equals("") && request.getParameter("descripcion") != null){
+			descripcion = request.getParameter("descripcion");
+		}
+		if(!request.getParameter("ciudad").equals("") && request.getParameter("ciudad") != null){
+			ciudad = request.getParameter("ciudad");
+		}
+		if(!request.getParameter("vendedor").equals("") && request.getParameter("vendedor") != null){
+			usuario = request.getParameter("vendedor");
+		}
+		
 		if(usuario != null){
 			try {
 				usuarios = (List<Usuario>)udao.recuperarUnUsuarioNombre(usuario);
@@ -90,17 +107,36 @@ public class buscarProductoServlet extends HttpServlet {
 				e.printStackTrace();
 			} 
 		for(int i = 0 ; i < usuarios.size() ; i++){
+			if(productos == null){
+				try {
+					productos = (List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId());
+				} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else{
+				try {
+					productos.addAll((List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId()));
+				} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		}else{
 			try {
-				productos.addAll((List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId()));
+				productos = (List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, -1);
 			} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-		}
-		
+		request.setAttribute("productos", productos);
+		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 
 	}
 

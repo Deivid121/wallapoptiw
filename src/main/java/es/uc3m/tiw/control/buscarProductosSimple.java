@@ -21,18 +21,21 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 import es.uc3m.tiw.wallapop.dominios.Producto;
+import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAO;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
+import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAO;
+import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
 
 /**
- * Servlet implementation class buscarProductoClave
+ * Servlet implementation class buscarProductosSimple
  */
-@WebServlet("/buscarProductoClave")
-public class buscarProductoClave extends HttpServlet {
+@WebServlet("/buscarProductosSimple")
+public class buscarProductosSimple extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Producto producto;
+	private List<Producto> productos = null;
+	private List<Usuario> usuarios;
 	private ProductoDAO pdao;
-	private String pagina;
 	private ServletConfig config;
 	@PersistenceContext(unitName="wallapoptiw")
     EntityManager em;
@@ -42,7 +45,7 @@ public class buscarProductoClave extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public buscarProductoClave() {
+    public buscarProductosSimple() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,6 +60,7 @@ public class buscarProductoClave extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doPost(request,response);
 	}
 
@@ -64,24 +68,35 @@ public class buscarProductoClave extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int clave = Integer.parseInt(request.getParameter("clave"));
-		try{
-			 producto = pdao.buscarProductoClave(clave);
-		}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+		String palabra = null;
+		productos = null;
+		List <Producto> aux = null;
+		if(!request.getParameter("palabra").equals("") && request.getParameter("palabras") != null){
+			palabra = request.getParameter("palabra");
+		}
+		try {
+			productos = (List<Producto>) pdao.buscarProductoTitulo(palabra);
+		} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 				| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-		if (producto != null) {
-			request.setAttribute("Producto", producto);
-			pagina = "/MostrarProductos.jsp";
-		}else {
-			String mensaje = "No hay productos almacenados con la clave especificada";
-			request.setAttribute("mensajeError", mensaje);
-			pagina = "/MostrarProductos.jsp"; //modificar el destino a una pagina de error
+		
+		try {
+			aux = (List<Producto>) pdao.listarProductos();
+		} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+				| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		config.getServletContext().getRequestDispatcher(pagina).forward(request, response);
+		for(int i = 0; i < aux.size(); i++){
+			if(aux.get(i).getDescripcion().contains(palabra)){
+				productos.add(aux.get(i));
+			}
+		}
+		request.setAttribute("productos", productos);
+		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+		
 	}
 
 }

@@ -17,10 +17,9 @@
 	<!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
 	<div id=topNavElement class="collapse navbar-collapse navbar-ex1-collapse">
-		<form class="navbar-form navbar-left" role="search">
+		<form class="navbar-form navbar-left" role="search" action = "buscarProductosSimple" method ="post">
 			<div class="form-group ">
-				<input type="text" class="form-control"
-					placeholder="Buscar producto ...">
+				<input type="text" class="form-control" placeholder="Buscar producto ..." name = "palabra">
 			</div>
 			<button type="submit" class="btn btn-default">Buscar</button>
 		</form>
@@ -33,9 +32,9 @@
 						<div class="form-group ">
 							<input type="text" class="form-control"	placeholder="Categoria ..." name = "categoria"> 
 							<input type="text" class="form-control" placeholder="Ciudad ..." name = "ciudad"> 
-							<input type="text" class="form-control" placeholder="Vendedor ..." name = "usuario">
+							<input type="text" class="form-control" placeholder="Vendedor ..." name = "vendedor">
 							<input type="text" class="form-control" placeholder="Titulo ..." name = "titulo">
-							<input type="text" class="form-control" placeholder="Cescripcion ..." name = "descripcion">
+							<input type="text" class="form-control" placeholder="Descripcion ..." name = "descripcion">
 						</div>
 						<button type="submit" class="btn btn-default">Buscar</button>
 					</form>
