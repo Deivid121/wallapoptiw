@@ -53,9 +53,9 @@
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="perfilusuario.jsp">Perfil de usuario</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">Mis productos</a></li>
+									href="MisProductos">Mis productos</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">Subir producto</a></li>
+									href="crearProducto.jsp">Subir producto</a></li>
 								<li role="presentation" class="divider"></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="logout">Desconexión</a></li>
