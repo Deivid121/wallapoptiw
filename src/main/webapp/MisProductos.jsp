@@ -34,8 +34,8 @@
 				<th>Categoría</th>
 				<th>Descripción</th>
 				<th>Precio</th>
-				<th>Imagen1</th>
 				<th>Imagen</th>
+				<th>Estado</th>
 				<th>Opciones</th>
 			</tr>
 <c:forEach items="${productos}" var="producto"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
@@ -46,8 +46,9 @@
 			<td>${producto.categoria }</td>
 			<td>${producto.descripcion }</td>
 			<td>${producto.precio }</td>
-			<td>${producto.imagen }</td>
 			<td><img src = "./imagenes/${producto.imagen }" width ="25" height="25"></td>
+			<td>${producto.estado }</td>
+			
 		
 			<td>
 			<a href="VerProductos?id=${producto.id }"><span class="glyphicon glyphicon-tag"></span></a>
