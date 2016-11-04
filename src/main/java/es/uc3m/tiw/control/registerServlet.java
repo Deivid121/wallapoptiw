@@ -82,7 +82,7 @@ public class registerServlet extends HttpServlet {
 		u.setApellido1(request.getParameter("FSurname"));
 		u.setApellido2(request.getParameter("SSurname"));
 		u.setEmail(request.getParameter("Email"));
-		u.setPassword(request.getParameter("Upass"));
+		u.setPassword(request.getParameter("pass_confirmation"));
 		u.setCiudad(request.getParameter("City"));
 		try {
 			udao.crearUsuario(u);
