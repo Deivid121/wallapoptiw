@@ -20,7 +20,7 @@
 				id="usuario" value="${sessionScope.usuario.email}"  ><br>
 			<label for="clave">Password:</label> <input
 				type="password" name="password" id="clave" value="${sessionScope.usuario.password}">
-				<label for="ejemplo_password_1">Ciudad</label> <select multiple
+				<label for="ejemplo_password_1">Ciudad:</label> <select multiple
 							class="form-control" name="ciudad" size="5" data-validation="required" data-validation="length" data-validation-length="max1">
 							<opton>a coruna</opton>
 							<option>alava</option>
