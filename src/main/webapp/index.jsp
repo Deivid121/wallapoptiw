@@ -15,10 +15,10 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-   <script src ="js/bootstrap.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
 
    
 
@@ -81,17 +81,27 @@
     <ul class="nav navbar-nav navbar-right">
       <li> 
         <div class="form-group ">     
-          <form class="form-inline navbar-form" role="form" action="login" method="post">
+          <form class="form-inline navbar-form" role="form" action="login" method="post" id="login">
               <label class="sr-only" for="ejemplo_email_2">Email</label>
               <input type="text" class="form-control" name="User"
-                     placeholder="Introduce tu email">
-              <label class="sr-only" for="ejemplo_password_2">Contrase√±a</label>
+                     placeholder="Introduce tu email" data-validation="email" 
+                     data-validation-error-msg="No has introducido un email valido (a@b.c)">
+              <label class="sr-only" for="ejemplo_password_2" >Contrase√±a</label>
               <input type="password" class="form-control" name="Pass" 
-                     placeholder="ContraseÒa">
+                     placeholder="ContraseÒa" data-validation="length" data-validation-length="min8" 
+                     data-validation-error-msg="La contraseÒa tiene al menos 8 caracteres" >
               <input type="submit" class="btn btn-default" value="Entrar"></input>
               <a href="perfilusuario.html">Entrar</a>
             </div>
           </form>
+          <script>
+			$.validate({
+				form : '#login',	
+				 onError : function($form) {
+				      return false;
+				    }
+		    });
+		</script>
       </li>
       <li><a href="registro.jsp">Registrarse</a></li>
     </ul>
@@ -183,16 +193,6 @@
 
     </div><!--/.container-->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="offcanvas.js"></script>
   </body>
 </html>
 

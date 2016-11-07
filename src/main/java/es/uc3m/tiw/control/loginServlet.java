@@ -82,7 +82,8 @@ public class loginServlet extends HttpServlet {
 						sesion.setAttribute("logeado", true);
 						sesion.setAttribute("email", user.getEmail());
 						sesion.setAttribute("Nombre", user.getNombre());
-						config.getServletContext().getRequestDispatcher("/login.jsp").forward(request,response);
+						sesion.setAttribute("user", user);
+						config.getServletContext().getRequestDispatcher("/perfilUsuario.jsp").forward(request,response);
 				}
 					
 				}

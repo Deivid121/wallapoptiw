@@ -103,7 +103,7 @@
         <div class="row">
           <div class="list-group">
             <div class="list-group-item">
-              <h5>Nombre  </h5><a href="#" >${nombre}</a>
+              <h5>Nombre  </h5><a href="#" >${sesionScope.user.Nombre}</a>
             </div>
             <div class="list-group-item">
               <h5>Primer apellido  </h5><a href="#" >Ramirez</a>
