@@ -45,6 +45,30 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 		//em.flush();
 	}
 	@Override
+    public Usuario recuperarUnUsuarioPorClave(int pk) throws SQLException{
+        
+        return em.find(Usuario.class, pk);
+        
+    }
+	@Override
+	public Usuario actualizarUsuario (Usuario user )throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		
+		ut.begin();
+
+		em.merge(user);
+		
+		ut.commit();
+		
+		
+		return recuperarUnUsuarioPorClave(user.getId());
+	
+	
+	}
+	
+	
+	
+	
+	@Override
 	public void setConexion(EntityManager em) {
 		this.em = em;
 		

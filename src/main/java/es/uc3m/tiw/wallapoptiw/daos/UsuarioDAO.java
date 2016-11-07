@@ -27,4 +27,10 @@ public interface UsuarioDAO {
 	public abstract Usuario buscarUsuario(String user, String pass)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+public abstract	Usuario recuperarUnUsuarioPorClave(int pk) throws SQLException;
+
+public abstract Usuario actualizarUsuario(Usuario user) throws SQLException, NotSupportedException, SystemException, SecurityException,
+		IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
 }
