@@ -53,6 +53,13 @@ public class AdminDAOImpl implements AdminDAO{
         return em.find(Usuario.class, pk);
         
     }
+	@Override
+	public void eliminarUsuario (Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		
+		ut.begin();
+		em.remove(em.merge(user));
+		ut.commit();
+	}
 	
 	public EntityManager getEm() {
 		return em;

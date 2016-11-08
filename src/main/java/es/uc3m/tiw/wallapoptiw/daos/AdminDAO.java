@@ -32,6 +32,9 @@ public interface AdminDAO {
 
 	Usuario recuperarUsuarioPorClave(int pk) throws SQLException;
 
+	void eliminarUsuario(Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException,
+			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
 
 	
 	
