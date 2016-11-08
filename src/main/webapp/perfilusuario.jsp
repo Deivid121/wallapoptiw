@@ -103,22 +103,23 @@
         <div class="row">
           <div class="list-group">
             <div class="list-group-item">
-              <h5>Nombre  </h5><a href="#" >${sessionScope.usuario.nombre}</a>
+              <h4>Nombre  </h4>${sessionScope.usuario.nombre}
             </div>
             <div class="list-group-item">
-              <h5>Primer apellido  </h5><a href="#" >Ramirez</a>
+              <h4>Primer apellido  </h4>${sessionScope.usuario.apellido1}
             </div>
             <div class="list-group-item">
-              <h5>Segundo apellido  </h5><a href="#" >Garcia</a>
+              <h4>Segundo apellido  </h4>${sessionScope.usuario.apellido2}
             </div>
             <div class="list-group-item">
-              <h5>Segundo apellido  </h5><a href="#" >Garcia</a>
+              <h4>Contraseña  </h4><a href="" >********</a>
             </div>
             <div class="list-group-item">
-              <h5>Contraseña  </h5><a href="#" >********</a>
+              <h4>E-mail  </h4>${sessionScope.usuario.email}
             </div>
             <div class="list-group-item">
-              <h5>E-mail  </h5><a href="#" ><%=request.getAttribute("email") %></a>
+              <a href="/wallapoptiw/editarUsuario.jsp" class="btn btn-default">Editar pefil</a>
+              <a href="#" class="btn btn-default">Administrar productos</a>
             </div>
           </div>
           <div class="col-xs-12 col-lg-4">
