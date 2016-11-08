@@ -58,7 +58,7 @@ public class usuarioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		doPost(request,response);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class usuarioServlet extends HttpServlet {
 		u.setApellido1(request.getParameter("apellido1"));
 		u.setApellido2(request.getParameter("apellido2"));
 		u.setEmail(request.getParameter("email"));
-		u.setPassword(request.getParameter("password"));
+		u.setPassword(request.getParameter("clave_confirmation"));
 		u.setCiudad(request.getParameter("ciudad"));
 		
 		

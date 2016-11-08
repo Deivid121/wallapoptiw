@@ -47,13 +47,13 @@
 			<li><c:choose>
 					<c:when test="${logeado}">
 						<div class="dropdown">
-						<li class="dropdown">
+							<li class="dropdown">
 						    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 						      Hola ${sessionScope.usuario.nombre} <span class="caret"></span>
 						    </a>
 							<ul class="dropdown-menu" role="menu">
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">Perfil de usuario</a></li>
+									href="perfilusuario.jsp">Perfil de usuario</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="#">Mis productos</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"

@@ -4,25 +4,58 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <title>Editar Usuarios</title>
 </head>
 <body>
-	<form action="usuarioServlet" method="post">
-		<fieldset>
-			<legend>Formulario de Edición de Usuarios</legend>
-			<label for="pk">Nombre:</label> 
-			<input type="text" name="nombre" id="pk" value="${sessionScope.usuario.nombre}" size="3"   ><br>
-			<label for="nom">Apellido1:</label> <input type="text" name="apellido1"
-				id="nom" value="${sessionScope.usuario.apellido1}"><br> 
-			<label for="apellidos">Apellido2:</label> <input type="text" name="apellido2"
-				id="apellidos" value="${sessionScope.usuario.apellido2}"  ><br>
-            <label for="usuario">Email:</label> <input type="text" name="email"
-				id="usuario" value="${sessionScope.usuario.email}"  ><br>
-			<label for="clave">Password:</label> <input
-				type="password" name="password" id="clave" value="${sessionScope.usuario.password}">
-				<label for="ejemplo_password_1">Ciudad:</label> <select multiple
-							class="form-control" name="ciudad" size="5" data-validation="required" data-validation="length" data-validation-length="max1">
-							<opton>a coruna</opton>
+<jsp:include page="menu.jsp" />
+<div class="container">
+		<div class="row row-offcanvas row-offcanvas-right">
+			<div class="row">
+				<form role="form" action="usuarioServlet" method="post" id="edituser">
+					<div class="form-group">
+						<label>Nombre</label> <input type="text"
+							class="form-control" data-validation="required" data-validation="length" 
+							data-validation-length="max30" placeholder="Nombre" name="nombre" value="${sessionScope.usuario.nombre}">
+					</div>
+					<div class="form-group">
+						<label>Primer apellido</label> <input type="text"
+							class="form-control" data-validation="required" data-validation="length"
+							 data-validation-length="max30"	placeholder="Primer apellido" name="apellido1" value="${sessionScope.usuario.apellido1}">
+					</div>
+					<div class="form-group">
+						<label for="nombre">Segundo apellido</label> <input type="text"
+							class="form-control" data-validation="required" data-validation="length" data-validation-length="max30"
+							placeholder="Segundo apellido" name="apellido2" value="${sessionScope.usuario.apellido2}">
+					</div>
+					<div class="form-group">
+						<label for="ejemplo_email_1">Email</label> <input data-validation="email" 
+						data-validation-error-msg="Debes introducir un email valido"
+							class="form-control" data-validation="email"
+							placeholder="Introduce tu email" name="email" value="${sessionScope.usuario.email}">
+					</div>
+					<div class="form-group">
+						<label for="ejemplo_password_1">Contraseña</label> <input
+							type="password" class="form-control" data-validation="length" data-validation-length="min8"
+							placeholder="Contraseña" name="clave_confirmation" value="${sessionScope.usuario.password}">
+					</div>
+					<div class="form-group">
+						<label for="ejemplo_password_1">Verificar contraseña</label> <input
+							type="password" class="form-control" data-validation="confirmation" 
+							placeholder="Verificar contraseña" name="clave">
+					</div>
+					<div class="form-group">
+						<label for="ejemplo_password_1">Ciudad</label> <select multiple
+							class="form-control" name="City" size="5" data-validation="required" data-validation="length" data-validation-length="max1">
+							<option>a coruna</option>
 							<option>alava</option>
 							<option>albacete</option>
 							<option>alicante</option>
@@ -75,11 +108,23 @@
 							<option>zamora</option>
 							<option>zaragoza</option>
 						</select>
-			<input type="hidden" value="EDITAR" name="accion">
-		</fieldset>
-		<input type="submit" value="Guardar cambios">
-
-	</form>
-
+					</div>
+					<button type="submit" class="btn btn-default" name="Register">Enviar</button>
+				</form>
+				<script>
+					$.validate({
+						form : '#edituser',	
+						 modules : 'security',
+						 onError : function($form) {
+							 console.log($form);
+						      return false;
+						    }
+				    });
+				</script>
+				</div>
+			<!--/.row-->
+		</div>
+		<!--/.offcanvas-->
+	</div>
 </body>
 </html>
