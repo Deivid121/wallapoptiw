@@ -40,7 +40,7 @@
 </head>
 
 <body>
-	<jsp:include page="reg.jsp" />
+	<jsp:include page="menu.jsp" />
 	<div class="container">
 
 		<div class="row row-offcanvas row-offcanvas-right">
