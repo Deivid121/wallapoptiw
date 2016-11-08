@@ -83,7 +83,7 @@ public class loginServlet extends HttpServlet {
 						sesion.setAttribute("email", user.getEmail());
 						sesion.setAttribute("Nombre", user.getNombre());
 						sesion.setAttribute("usuario", user);
-						config.getServletContext().getRequestDispatcher("/perfilusuario.jsp").forward(request,response);
+						config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 				}
 					
 				}

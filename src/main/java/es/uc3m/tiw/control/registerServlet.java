@@ -90,7 +90,7 @@ public class registerServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 	}
 
 }
