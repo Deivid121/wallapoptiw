@@ -93,7 +93,7 @@
 	
 		<td>
 		<a href="usuarioAdmin?id=${usuario.id }"><span class="glyphicon glyphicon-tag"></span></a>
-		<a href="usuarioAdmin?id=${usuario.id}"><span action="VerUsuarioAdmin" class="glyphicon glyphicon-edit"></a>
+		<a href="usuarioAdmin?id=${usuario}"><span class="glyphicon glyphicon-edit"></a>
 		<a href="usuarioAdmin?id=${usuario.id}"><span action="VerUsuarioAdmin" class="glyphicon glyphicon-trash"></span></a></td>
 	</form>
 </tr>
