@@ -1,5 +1,6 @@
 package es.uc3m.tiw.wallapoptiw.daos;
 import javax.persistence.EntityManager;
+import java.util.Collection;
 import javax.transaction.UserTransaction;
 import javax.persistence.EntityManager;
 import javax.transaction.UserTransaction;
@@ -40,6 +41,18 @@ public class AdminDAOImpl implements AdminDAO{
 			return admin;
 		}
 	}
+	@Override
+	public Collection<Usuario> buscarUsuarios() throws SQLException , NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+	
+		return em.createQuery("select u from Usuario u",Usuario.class).getResultList();
+	}
+	
+	@Override
+    public Usuario recuperarUsuarioPorClave(int pk) throws SQLException{
+        
+        return em.find(Usuario.class, pk);
+        
+    }
 	
 	public EntityManager getEm() {
 		return em;

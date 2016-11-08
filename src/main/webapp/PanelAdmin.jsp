@@ -73,15 +73,32 @@
             <th>Apellido1</th>
             <th>Apellido2</th>
             <th>Email</th>
+            <th>Contraseña</th>
             <th>Ciudad</th>
+            <th>Opciones</th>
         </tr>
         <tr>
-            <td>Example</td>
-            <td>Example</td>
-            <td>Example</td>
-            <td>Example</td>
-            <td>Example</td>
-            <td>Example</td>
+        <c:if test="empty usuarios"><p>Usuarios vacíos</p></c:if>
+        
+<c:forEach items="${usuarios}" var="usuario"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
+<tr>
+	<form>
+		<td>${usuario.id }</td> <!-- Usuario es un POJO por lo que podemos acceder a sus propiedades sin necesidad de get/set -->
+		<td>${usuario.nombre }</td>
+		<td>${usuario.apellido1 }</td>
+		<td>${usuario.apellido2 }</td>
+		<td>${usuario.email }</td>
+		<td>${usuario.password }</td>
+		<td>${usuario.ciudad }</td>
+	
+		<td>
+		<a href="usuarioAdmin?id=${usuario.id }"><span class="glyphicon glyphicon-tag"></span></a>
+		<a href="usuarioAdmin?id=${usuario.id}"><span action="VerUsuarioAdmin" class="glyphicon glyphicon-edit"></a>
+		<a href="usuarioAdmin?id=${usuario.id}"><span action="VerUsuarioAdmin" class="glyphicon glyphicon-trash"></span></a></td>
+	</form>
+</tr>
+
+</c:forEach>
 
         </tr>
     </table>

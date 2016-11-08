@@ -78,7 +78,7 @@ public class AdminLogin extends HttpServlet {
 						
 						sesion.setAttribute("logeado", true);
 						sesion.setAttribute("admin", admin);
-						config.getServletContext().getRequestDispatcher("/PanelAdmin.jsp").forward(request,response);
+						config.getServletContext().getRequestDispatcher("/AdminPanel").forward(request,response);
 				}
 					
 				}
