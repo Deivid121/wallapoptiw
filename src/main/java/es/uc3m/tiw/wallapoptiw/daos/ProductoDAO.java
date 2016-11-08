@@ -38,9 +38,6 @@ public interface ProductoDAO {
 	Collection<Producto> listarProductos() throws SQLException, NotSupportedException, SystemException, SecurityException,
 			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
-	Producto buscarProductoClave(String clave)
-			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
-			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
 	Producto buscarProductoCategoria(String categoria)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
@@ -49,5 +46,17 @@ public interface ProductoDAO {
 	void setTransaction(UserTransaction ut);
 
 	void setConexion(EntityManager em);
+
+	Producto buscarProductoUsuario(int usuario)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+	Producto buscarProductoClave(int clave)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+	void eliminarProductoClave(int clave)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
 }
