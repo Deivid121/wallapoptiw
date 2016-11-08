@@ -133,7 +133,7 @@
 					<div class="form-group">
 						<label for="ejemplo_password_1">Ciudad</label> <select multiple
 							class="form-control" name="City" size="5" data-validation="required" data-validation="length" data-validation-length="max1">
-							<opton>a coruna</opton>
+							<option>a coruna</option>
 							<option>alava</option>
 							<option>albacete</option>
 							<option>alicante</option>
