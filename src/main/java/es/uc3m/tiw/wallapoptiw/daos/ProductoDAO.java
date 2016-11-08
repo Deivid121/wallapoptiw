@@ -1,6 +1,7 @@
 package es.uc3m.tiw.wallapoptiw.daos;
 
 import java.sql.SQLException;
+import java.util.Collection;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -34,7 +35,7 @@ public interface ProductoDAO {
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
-	Producto listarProductos() throws SQLException, NotSupportedException, SystemException, SecurityException,
+	Collection<Producto> listarProductos() throws SQLException, NotSupportedException, SystemException, SecurityException,
 			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
 	Producto buscarProductoClave(String clave)
@@ -44,5 +45,9 @@ public interface ProductoDAO {
 	Producto buscarProductoCategoria(String categoria)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+	void setTransaction(UserTransaction ut);
+
+	void setConexion(EntityManager em);
 
 }

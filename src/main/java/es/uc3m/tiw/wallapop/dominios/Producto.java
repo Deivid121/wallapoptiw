@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 @Table(name = "PRODUCTOS")
@@ -22,18 +23,22 @@ public class Producto {
 	private String categoria;
 	@Column(length = 255, nullable = true)
 	private String descripcion;
-	@Column()
+	@Column()	
+	@Lob
 	private String imagen;
 	@Column(nullable = false)
 	private int precio;
+	@Column(nullable = false)
+	private int usuario;
 	
-	public Producto(String titulo, String categoria, String descripcion, String imagen, int precio) {
+	public Producto(String titulo, String categoria, String descripcion, String imagen, int precio, int usuario) {
 		super();
 		this.titulo = titulo;
 		this.categoria = categoria;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.precio = precio;
+		this.usuario = usuario;
 	}
 	
 	public Producto() {
@@ -76,7 +81,12 @@ public class Producto {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-	
+	public int getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(int usuario) {
+		this.usuario = usuario;
+	}
 	
 	
 }
