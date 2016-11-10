@@ -52,7 +52,7 @@
               <h4>Segundo apellido  </h4>${sessionScope.usuario.apellido2}
             </div>
             <div class="list-group-item">
-              <h4>Contraseña  </h4><a href="" >********</a>
+              <h4>Contraseña  </h4>********
             </div>
             <div class="list-group-item">
               <h4>E-mail  </h4>${sessionScope.usuario.email}
