@@ -54,7 +54,7 @@
 					</div>
 					<div class="form-group">
 						<label for="ejemplo_password_1">Ciudad</label> <select multiple
-							class="form-control" name="City" size="5" data-validation="required" data-validation="length" data-validation-length="max1">
+							class="form-control" name="ciudad" size="5" data-validation="required" data-validation="length" data-validation-length="max1">
 							<option>a coruna</option>
 							<option>alava</option>
 							<option>albacete</option>
