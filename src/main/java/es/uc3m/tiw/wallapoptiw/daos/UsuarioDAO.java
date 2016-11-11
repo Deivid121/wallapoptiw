@@ -33,4 +33,7 @@ public abstract	Usuario recuperarUnUsuarioPorClave(int pk) throws SQLException;
 public abstract Usuario actualizarUsuario(Usuario user) throws SQLException, NotSupportedException, SystemException, SecurityException,
 		IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
+void eliminarUsuario(Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException,
+		IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
 }

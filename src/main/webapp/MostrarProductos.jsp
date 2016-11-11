@@ -11,6 +11,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp" />
 <c:if test="${empty listaProductos }"> <!-- usuarios es un atributo metido en el request por eso no es necesario ponerle el prefijo param -->
 <p class="error">Si no ves productos es porque has accedido directamente a la pagina y por tanto no has pasado
 por el servlet controlador y no hay datos en el objeto request.

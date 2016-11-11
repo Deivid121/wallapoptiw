@@ -36,6 +36,7 @@
 </head>
 
 <body>
+<jsp:include page="menu.jsp" />
 	<nav class="navbar navbar-default" role="navigation">
 		<!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->

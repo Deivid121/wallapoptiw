@@ -16,56 +16,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-      <!-- El logotipo y el icono que despliega el men√∫ se agrupan
-           para mostrarlos mejor en los dispositivos m√≥viles -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Desplegar navegaci√≥n</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Logotipo</a>
-      </div>
-     
-      <!-- Agrupar los enlaces de navegaci√≥n, los formularios y cualquier
-           otro elemento que se pueda ocultar al minimizar la barra -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group ">
-            <input type="text" class="form-control" placeholder="Buscar producto ...">
-          </div>
-          <button type="submit" class="btn btn-default">Buscar</button>
-        </form>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group ">
-            <input type="text" class="form-control" placeholder="Buscar usuario ...">
-          </div>
-          <button type="submit" class="btn btn-default">Buscar</button>
-        </form>
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Busqueda avanzada <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group ">
-                  <input type="text" class="form-control" placeholder="Categoria ...">
-                  <input type="text" class="form-control" placeholder="Ciudad ...">
-                  <input type="text" class="form-control" placeholder="Vendedor ...">
-                  <input type="text" class="form-control" placeholder="Titulo ...">
-                  <input type="text" class="form-control" placeholder="Descripci√≥n ...">
-                </div>
-                <button type="submit" class="btn btn-default">Buscar</button>
-              </form>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
+<jsp:include page="menu.jsp" />
+
     <table class="table table-hover">
         <tr>
         ††† <th>Id</th>

@@ -52,14 +52,18 @@
               <h4>Segundo apellido  </h4>${sessionScope.usuario.apellido2}
             </div>
             <div class="list-group-item">
-              <h4>Contraseña  </h4><a href="" >********</a>
+              <h4>Contraseña  </h4>********
             </div>
             <div class="list-group-item">
               <h4>E-mail  </h4>${sessionScope.usuario.email}
             </div>
+             <div class="list-group-item">
+              <h4>Ciudad  </h4>${sessionScope.usuario.ciudad}
+            </div>
             <div class="list-group-item">
               <a href="/wallapoptiw/editarUsuario.jsp" class="btn btn-default">Editar pefil</a>
               <a href="#" class="btn btn-default">Administrar productos</a>
+              <a href="borrarUsuario" class="btn btn-default">Borrar cuenta</a>
             </div>
           </div>
           <div class="col-xs-12 col-lg-4">
