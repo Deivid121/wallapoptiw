@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -29,6 +30,7 @@ import javax.transaction.UserTransaction;
 
 
 import es.uc3m.tiw.wallapop.dominios.Producto;
+import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAO;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
 
@@ -77,11 +79,13 @@ public class crearProductoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Creamos el producto con los atributos recogidos desde el cliente
 		p = new Producto();
+		HttpSession sesion = request.getSession();
 		p.setTitulo(request.getParameter("titulo"));
 		p.setCategoria(request.getParameter("categoria"));
 		p.setDescripcion(request.getParameter("descripcion"));
 		p.setPrecio(Integer.parseInt(request.getParameter("precio")));
-		p.setUsuario(2);
+		Usuario u = (Usuario) sesion.getAttribute("usuario");	
+		p.setUsuario(u.getId());
 //Recuperar una imagen y guardarla en el servidor
 		/*
 		 * cogemos la imagen de la "parte" de la cabecera que la contiene, para ello en el input del formulario
@@ -100,7 +104,7 @@ public class crearProductoServlet extends HttpServlet {
 		/*
 		 * Creamos un fichero con el nombre del fichero, incluyendo el tipo (png,jpg...)
 		 */
-		File imagen = new File("/opt/glassfish/payara41/glassfish/domains/domain1/eclipseApps/wallapoptiw/imagenes/"+fileName);
+		File imagen = new File("./../eclipseApps/wallapoptiw/imagenes/"+fileName);
 		/*
 		 * Utilizamos el contenido de la "parte" recuperada para "llenar" el fichero que acabamos de crear
 		 */
