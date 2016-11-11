@@ -88,8 +88,9 @@
 								type="password" class="form-control" id="ejemplo_password_2"
 								placeholder="Contraseña">
 							<button type="submit" class="btn btn-default">Entrar</button>
-					</div>
+					
 					</form>
+					</div>
 				</li>
 				<li><a href="#">Registrarse</a></li>
 			</ul>

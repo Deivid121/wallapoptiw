@@ -22,6 +22,7 @@ por el servlet controlador y no hay datos en el objeto request.
 <th>Categoría</th>
 <th>Descripción</th>
 <th>Precio</th>
+<th>Imagen1</th>
 <th>Imagen</th>
 </tr>
 <c:forEach items="${listaProductos}" var="producto"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
@@ -30,11 +31,11 @@ por el servlet controlador y no hay datos en el objeto request.
 	<td>${producto.categoria }</td>
 	<td>${producto.descripcion }</td>
 	<td>${producto.precio }</td>
-	<td><img src = "./imagenes/producto.jpg"></td>
+	<td>${producto.imagen }</td>
+	<td><img src = "./imagenes/${producto.imagen }" width ="25" height="25"></td>
 </tr>
 
 </c:forEach>
 </table>
-<img src = "wallapoptiw/hoja.jpg">
 </body>
 </html>

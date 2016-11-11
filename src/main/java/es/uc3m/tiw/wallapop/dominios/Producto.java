@@ -26,9 +26,9 @@ public class Producto {
 	@Column()	
 	@Lob
 	private String imagen;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private int precio;
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private int usuario;
 	
 	public Producto(String titulo, String categoria, String descripcion, String imagen, int precio, int usuario) {
