@@ -1,9 +1,16 @@
 package es.uc3m.tiw.wallapop.mdb;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -17,9 +24,11 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+import es.uc3m.tiw.wallapop.dominios.Mensaje;
+import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.MensajesDAO;
 import es.uc3m.tiw.wallapoptiw.daos.MensajesDAOImpl;
-import es.uc3m.tiw.wallapop.dominios.Mensaje;
+import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAO;
 
 /**
  * Message-Driven Bean implementation class for: LectorMensajesMDB
@@ -29,7 +38,8 @@ import es.uc3m.tiw.wallapop.dominios.Mensaje;
 				propertyName = "destination", propertyValue = "jms_tiwConnectionFactory"), @ActivationConfigProperty(
 				propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 		}, 
-		mappedName = "jms_tiwConnectionFactory")
+		mappedName = "jms_mensajes")
+@TransactionManagement(TransactionManagementType.BEAN)
 public class LectorMensajesMDB implements MessageListener {
 	private MensajesDAO msgDao;
 	@PersistenceContext(unitName="wallapoptiw")
@@ -69,5 +79,7 @@ public class LectorMensajesMDB implements MessageListener {
    
         
     }
+        
+    }
 
-}
+

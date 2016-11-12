@@ -3,9 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
+
+<title>Admin: editar producto</title>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
 <script
@@ -13,10 +21,9 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
-<title>Editar Producto</title>
 </head>
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="menuadmin.jsp" />
 <div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 			<div class="row">
