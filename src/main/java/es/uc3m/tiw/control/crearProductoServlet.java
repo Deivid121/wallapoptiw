@@ -1,6 +1,5 @@
 package es.uc3m.tiw.control;
 
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -27,19 +27,19 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
-import javax.imageio.ImageIO;
+
 
 import es.uc3m.tiw.wallapop.dominios.Producto;
+import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAO;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
-import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAO;
-import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
+
 
 /**
  * Servlet implementation class crearProductoServlet
  */
 @WebServlet("/crearProducto")
-@MultipartConfig(location = "/home/tiw/Desktop/wallapoptiw/src/imagenes")
+@MultipartConfig(location = "./../../../eclipseApps/wallapoptiw/imagenes")
 public class crearProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static Producto p;
@@ -78,10 +78,15 @@ public class crearProductoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Creamos el producto con los atributos recogidos desde el cliente
 		p = new Producto();
+		HttpSession sesion = request.getSession();
 		p.setTitulo(request.getParameter("titulo"));
 		p.setCategoria(request.getParameter("categoria"));
-		p.setDescripcion(request.getParameter("descripcion"));	
+		p.setDescripcion(request.getParameter("descripcion"));
 		p.setPrecio(Integer.parseInt(request.getParameter("precio")));
+		Usuario u = (Usuario) sesion.getAttribute("usuario");	
+		p.setEstado("Disponible");
+		p.setUsuario(u.getId());
+		p.setCiudad(u.getCiudad());
 //Recuperar una imagen y guardarla en el servidor
 		/*
 		 * cogemos la imagen de la "parte" de la cabecera que la contiene, para ello en el input del formulario
@@ -96,11 +101,12 @@ public class crearProductoServlet extends HttpServlet {
 		 * Utilizamos el nombre del fichero para guardarlo en la base de datos
 		 * IMPORTANTE: estamos guardando el nombre del fichero, no la URL completa
 		 */
-		p.setImagen(fileName);
+		String nombreImagen = u.getId() + fileName;
+		p.setImagen(nombreImagen);
 		/*
 		 * Creamos un fichero con el nombre del fichero, incluyendo el tipo (png,jpg...)
 		 */
-		File imagen = new File("/home/tiw/Desktop/wallapoptiw/src/main/webapp/imagenes/"+fileName);
+		File imagen = new File("./../eclipseApps/wallapoptiw/imagenes/"+nombreImagen);
 		/*
 		 * Utilizamos el contenido de la "parte" recuperada para "llenar" el fichero que acabamos de crear
 		 */
@@ -118,8 +124,9 @@ public class crearProductoServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String pagina = "/recuperarProducto";
+		String pagina = "/MisProductos";
 		config.getServletContext().getRequestDispatcher(pagina).forward(request, response);
+		
 		
 	}
 

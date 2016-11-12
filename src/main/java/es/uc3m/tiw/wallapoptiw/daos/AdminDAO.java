@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.UserTransaction;
 
 import es.uc3m.tiw.wallapop.dominios.Administrador;
+import es.uc3m.tiw.wallapop.dominios.Producto;
 import es.uc3m.tiw.wallapop.dominios.Usuario;
 
 import java.sql.Connection;
@@ -34,6 +35,12 @@ public interface AdminDAO {
 
 	void eliminarUsuario(Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException,
 			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+	Producto recuperarProductoPorClave(int id) throws SQLException;
+
+	Collection<Producto> listarProductos()
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
 
 	

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<nav class="navbar navbar-default" role="navigation">
+<nav id=nav class="navbar navbar-default" role="navigation">
 	<!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
 	<div class="navbar-header">
@@ -16,11 +16,10 @@
 
 	<!-- Agrupar los enlaces de navegación, los formularios y cualquier
        otro elemento que se pueda ocultar al minimizar la barra -->
-	<div class="collapse navbar-collapse navbar-ex1-collapse">
-		<form class="navbar-form navbar-left" role="search">
+	<div id=topNavElement class="collapse navbar-collapse navbar-ex1-collapse">
+		<form class="navbar-form navbar-left" role="search" action = "buscarProductosSimple" method ="post">
 			<div class="form-group ">
-				<input type="text" class="form-control"
-					placeholder="Buscar producto ...">
+				<input type="text" class="form-control" placeholder="Buscar producto ..." name = "palabra">
 			</div>
 			<button type="submit" class="btn btn-default">Buscar</button>
 		</form>
@@ -29,15 +28,13 @@
 				data-toggle="dropdown"> Busqueda avanzada <b class="caret"></b>
 			</a>
 				<ul class="dropdown-menu">
-					<form class="navbar-form navbar-left" role="search">
+					<form class="navbar-form navbar-left" role="search" action ="buscarProducto" method ="post">
 						<div class="form-group ">
-							<input type="text" class="form-control"
-								placeholder="Categoria ..."> <input type="text"
-								class="form-control" placeholder="Ciudad ..."> <input
-								type="text" class="form-control" placeholder="Vendedor ...">
-							<input type="text" class="form-control" placeholder="Titulo ...">
-							<input type="text" class="form-control"
-								placeholder="Descripción ...">
+							<input type="text" class="form-control"	placeholder="Categoria ..." name = "categoria"> 
+							<input type="text" class="form-control" placeholder="Ciudad ..." name = "ciudad"> 
+							<input type="text" class="form-control" placeholder="Vendedor ..." name = "vendedor">
+							<input type="text" class="form-control" placeholder="Titulo ..." name = "titulo">
+							<input type="text" class="form-control" placeholder="Descripcion ..." name = "descripcion">
 						</div>
 						<button type="submit" class="btn btn-default">Buscar</button>
 					</form>
@@ -55,9 +52,9 @@
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="perfilusuario.jsp">Perfil de usuario</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">Mis productos</a></li>
+									href="MisProductos">Mis productos</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
-									href="#">Subir producto</a></li>
+									href="crearProducto.jsp">Subir producto</a></li>
 								<li role="presentation" class="divider"></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1"
 									href="logout">Desconexi�n</a></li>

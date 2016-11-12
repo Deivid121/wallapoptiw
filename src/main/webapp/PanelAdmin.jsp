@@ -16,57 +16,11 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-      <!-- El logotipo y el icono que despliega el menÃº se agrupan
-           para mostrarlos mejor en los dispositivos mÃ³viles -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Desplegar navegaciÃ³n</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Logotipo</a>
-      </div>
-     
-      <!-- Agrupar los enlaces de navegaciÃ³n, los formularios y cualquier
-           otro elemento que se pueda ocultar al minimizar la barra -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group ">
-            <input type="text" class="form-control" placeholder="Buscar producto ...">
-          </div>
-          <button type="submit" class="btn btn-default">Buscar</button>
-        </form>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group ">
-            <input type="text" class="form-control" placeholder="Buscar usuario ...">
-          </div>
-          <button type="submit" class="btn btn-default">Buscar</button>
-        </form>
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Busqueda avanzada <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group ">
-                  <input type="text" class="form-control" placeholder="Categoria ...">
-                  <input type="text" class="form-control" placeholder="Ciudad ...">
-                  <input type="text" class="form-control" placeholder="Vendedor ...">
-                  <input type="text" class="form-control" placeholder="Titulo ...">
-                  <input type="text" class="form-control" placeholder="DescripciÃ³n ...">
-                </div>
-                <button type="submit" class="btn btn-default">Buscar</button>
-              </form>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
+<jsp:include page="menu.jsp" />
+
+
     <table class="table table-hover">
+    <h2>Usuarios del sistema</h2>
         <tr>
             <th>Id</th>
             <th>Nombre</th>
@@ -90,17 +44,55 @@
 		<td>${usuario.email }</td>
 		<td>${usuario.password }</td>
 		<td>${usuario.ciudad }</td>
+		
 	
 		<td>
 		<a href="usuarioAdmin?id=${usuario.id }"><span class="glyphicon glyphicon-tag"></span></a>
 		<a href="editarUsuarioAdmin?id=${usuario.id}"><span class="glyphicon glyphicon-edit"></span></a>
 		<a href="borrarUsuarioAdmin?id=${usuario.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
+
 	</form>
+	</tr>
+	</c:forEach>
+	
+
+	 <table class="table table-hover">
+	 <h2>Productos del sistema</h2>
+<tr>
+<th>Id</th>
+<th>Titulo</th>
+<th>Categoría</th>
+<th>Descripción</th>
+<th>Precio</th>
+<th>Imagen</th>
+<th>Estado</th>
+<th>Opciones</th>
+
 </tr>
 
-</c:forEach>
 
-        </tr>
-    </table>
+<c:forEach items="${productos}" var="producto"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
+<tr>
+<form>
+	<td>${producto.id }</td> 
+	<td>${producto.titulo }</td> 
+	<td>${producto.categoria }</td>
+	<td>${producto.descripcion }</td>
+	<td>${producto.precio }</td>
+	<td><img src = "./imagenes/${producto.imagen }" width ="25" height="25"></td>
+	<td>${producto.estado }</td>
+
+
+
+	
+		
+		<td>
+		<a href="VerProductosAdmin?id=${producto.id }"><span class="glyphicon glyphicon-tag"></span></a>
+		<a href="EditarProductoAdmin?id=${producto.id}"><span class="glyphicon glyphicon-edit"></span></a>
+		<a href="eliminarProductoClave?id=${producto.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
+	</form>
+	</tr>
+	</c:forEach>
+	
 </body>
 </html>

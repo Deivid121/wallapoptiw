@@ -60,6 +60,8 @@ public class AdminPanelServlet extends HttpServlet {
 		List<Usuario> lista = (List<Usuario>)dao.buscarUsuarios();
 		HttpSession sesion= request.getSession();
 		request.setAttribute("usuarios", lista);
+		List<Producto> listaProductos = (List<Producto>) dao.listarProductos();
+		request.setAttribute("productos", listaProductos);
 		String pagina = "/PanelAdmin.jsp";
 		config.getServletContext().getRequestDispatcher(pagina).forward(request, response);
 	} catch (SecurityException e) {

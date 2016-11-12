@@ -35,68 +35,8 @@
     <![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default" role="navigation">
-		<!-- El logotipo y el icono que despliega el menú se agrupan
-       para mostrarlos mejor en los dispositivos móviles -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Desplegar navegación</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Logotipo</a>
-		</div>
-
-		<!-- Agrupar los enlaces de navegación, los formularios y cualquier
-       otro elemento que se pueda ocultar al minimizar la barra -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group ">
-					<input type="text" class="form-control"
-						placeholder="Buscar producto ...">
-				</div>
-				<button type="submit" class="btn btn-default">Buscar</button>
-			</form>
-			<ul class="nav navbar-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"> Busqueda avanzada <b class="caret"></b>
-				</a>
-					<ul class="dropdown-menu">
-						<form class="navbar-form navbar-left" role="search">
-							<div class="form-group ">
-								<input type="text" class="form-control"
-									placeholder="Categoria ..."> <input type="text"
-									class="form-control" placeholder="Ciudad ..."> <input
-									type="text" class="form-control" placeholder="Vendedor ...">
-								<input type="text" class="form-control" placeholder="Titulo ...">
-								<input type="text" class="form-control"
-									placeholder="Descripción ...">
-							</div>
-							<button type="submit" class="btn btn-default">Buscar</button>
-						</form>
-					</ul></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<div class="form-group ">
-						<form class="form-inline navbar-form" role="form">
-							<label class="sr-only" for="ejemplo_email_2">Email</label> <input
-								type="email" class="form-control" id="ejemplo_email_2"
-								placeholder="Introduce tu email"> <label class="sr-only"
-								for="ejemplo_password_2">Contraseña</label> <input
-								type="password" class="form-control" id="ejemplo_password_2"
-								placeholder="Contraseña">
-							<button type="submit" class="btn btn-default">Entrar</button>
-					</div>
-					</form>
-				</li>
-				<li><a href="#">Registrarse</a></li>
-			</ul>
-		</div>
-	</nav>
-
-	<div class="container">
+<jsp:include page="menu.jsp" />
+		<div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 			<div class="row">
 				<form role="form" action="crearProducto" method="post" enctype="multipart/form-data">

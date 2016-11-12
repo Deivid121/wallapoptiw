@@ -2,6 +2,7 @@ package es.uc3m.tiw.wallapoptiw.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+import es.uc3m.tiw.wallapop.dominios.Producto;
 import es.uc3m.tiw.wallapop.dominios.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO{
@@ -50,6 +52,13 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         return em.find(Usuario.class, pk);
         
     }
+@Override
+public Collection<Usuario> recuperarUnUsuarioNombre(String nombre) throws SQLException{
+	Query consulta = em.createQuery("select u from Usuario u where u.nombre=:nb", Usuario.class);
+	consulta.setParameter("nb", nombre);
+	return consulta.getResultList();        
+    }
+
 	@Override
 	public Usuario actualizarUsuario (Usuario user )throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		
@@ -63,6 +72,13 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 		return recuperarUnUsuarioPorClave(user.getId());
 	
 	
+	}
+	@Override
+	public void eliminarUsuario (Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		
+		ut.begin();
+		em.remove(em.merge(user));
+		ut.commit();
 	}
 	
 	
