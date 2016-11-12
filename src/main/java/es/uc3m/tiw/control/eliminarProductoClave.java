@@ -45,7 +45,7 @@ public class eliminarProductoClave extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    public void init() throws ServletException {
+    public void init(ServletConfig config) throws ServletException {
     	this.config = config;
    		pdao = new ProductoDAOImpl();
    		pdao.setConexion(em);
@@ -63,7 +63,7 @@ public class eliminarProductoClave extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int clave  = Integer.parseInt(request.getParameter("clave"));
+		int clave  = Integer.parseInt(request.getParameter("id"));
 		try{
 			producto = pdao.buscarProductoClave(clave);
 			 pdao.eliminarProducto(producto);
@@ -72,17 +72,8 @@ public class eliminarProductoClave extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-		if (producto != null) {
-			String mensaje = "Producto eliminado con exito";
-			request.setAttribute("mensajeError",mensaje);
-			pagina = "/MostrarProductos.jsp";
-		}else {
-			String mensaje = "Dicho producto no está almacenado en la base de datos con esa clave";
-			request.setAttribute("mensajeError", mensaje);
-			pagina = "/MostrarProductos.jsp"; //modificar el destino a una pagina de error
-		}
-		config.getServletContext().getRequestDispatcher(pagina).forward(request, response);
+
+		config.getServletContext().getRequestDispatcher("/AdminPanel").forward(request, response);
 	}
 
 }

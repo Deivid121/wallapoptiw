@@ -18,7 +18,6 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.*;
 import es.uc3m.tiw.wallapop.dominios.*;
 
@@ -54,10 +53,29 @@ public class AdminDAOImpl implements AdminDAO{
         
     }
 	@Override
+    public Producto recuperarProductoPorClave(int id) throws SQLException{
+        
+        return em.find(Producto.class, id);
+        
+    }
+	@Override
+	public Collection<Producto>  listarProductos() throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		Query consulta = em.createQuery("select p from Producto p", Producto.class);
+		return  consulta.getResultList();
+		
+	}
+	
+	@Override
 	public void eliminarUsuario (Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		
 		ut.begin();
 		em.remove(em.merge(user));
+		ut.commit();
+	}
+	public void eliminarProducto (Producto prod) throws NotSupportedException, SystemException, SQLException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		
+		ut.begin();
+		em.remove(em.merge(prod));
 		ut.commit();
 	}
 	

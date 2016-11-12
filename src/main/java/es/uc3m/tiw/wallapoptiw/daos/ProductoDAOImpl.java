@@ -71,11 +71,10 @@ public class ProductoDAOImpl implements ProductoDAO {
 	}
 	@Override
 	public Producto buscarProductoClave(int clave) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
-		Query consulta = em.createQuery("select p from Producto p where p.producto=:pk", Producto.class);
-		consulta.setParameter("pk", clave);
-		return (Producto) consulta.getResultList().get(0);
-		
+
+		return em.find(Producto.class, clave);
 	}
+	
 	@Override
 	public Producto buscarProductoCategoria(String categoria) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		Query consulta = em.createQuery("select p from Producto p where p.producto=:cat", Producto.class);

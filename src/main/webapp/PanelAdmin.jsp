@@ -42,17 +42,51 @@
 		<td>${usuario.email }</td>
 		<td>${usuario.password }</td>
 		<td>${usuario.ciudad }</td>
+		
 	
 		<td>
 		<a href="usuarioAdmin?id=${usuario.id }"><span class="glyphicon glyphicon-tag"></span></a>
 		<a href="editarUsuarioAdmin?id=${usuario.id}"><span class="glyphicon glyphicon-edit"></span></a>
 		<a href="borrarUsuarioAdmin?id=${usuario.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
+
 	</form>
+	</tr>
+	</c:forEach>
+	
+	
+	 <table class="table table-hover">
+<tr>
+<th>Id</th>
+<th>Titulo</th>
+<th>Categoría</th>
+<th>Descripción</th>
+<th>Precio</th>
+<th>Imagen1</th>
+<th>Imagen</th>
+<th>Opciones</th>
+
 </tr>
+<c:forEach items="${productos}" var="producto"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
+<tr>
+<form>
+	<td>${producto.id }</td> 
+	<td>${producto.titulo }</td> 
+	<td>${producto.categoria }</td>
+	<td>${producto.descripcion }</td>
+	<td>${producto.precio }</td>
+	<td>${producto.imagen }</td>
+	<td><img src = "./imagenes/${producto.imagen }" width ="25" height="25"></td>
 
-</c:forEach>
 
-        </tr>
-    </table>
+	
+		
+		<td>
+		<a href="VerProductosAdmin?id=${producto.id }"><span class="glyphicon glyphicon-tag"></span></a>
+		<a href="EditarProductoAdmin?id=${producto.id}"><span class="glyphicon glyphicon-edit"></span></a>
+		<a href="eliminarProductoClave?id=${producto.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
+	</form>
+	</tr>
+	</c:forEach>
+	
 </body>
 </html>
