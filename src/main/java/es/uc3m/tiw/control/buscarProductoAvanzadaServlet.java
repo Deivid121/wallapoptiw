@@ -109,7 +109,7 @@ public class buscarProductoAvanzadaServlet extends HttpServlet {
 		for(int i = 0 ; i < usuarios.size() ; i++){
 			if(productos == null){
 				try {
-					productos = (List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId());
+					productos = (List<Producto>) pdao.buscarProductosAvanzada(ciudad, categoria, usuarios.get(i).getId());
 				} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 					// TODO Auto-generated catch block
@@ -117,7 +117,7 @@ public class buscarProductoAvanzadaServlet extends HttpServlet {
 				}
 			}else{
 				try {
-					productos.addAll((List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId()));
+					productos.addAll((List<Producto>) pdao.buscarProductosAvanzada(ciudad, categoria, usuarios.get(i).getId()));
 				} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 					// TODO Auto-generated catch block
@@ -128,13 +128,51 @@ public class buscarProductoAvanzadaServlet extends HttpServlet {
 		
 		}else{
 			try {
-				productos = (List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, -1);
+				productos = (List<Producto>) pdao.buscarProductosAvanzada(ciudad, categoria, -1);
 			} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		//cambio de la busqueda con el titulo y la descripción
+		if(titulo != null){
+			if(productos == null){
+				try {
+					productos = (List<Producto>) pdao.listarProductos();
+				} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+				for(int i = 0; i < productos.size(); i++){	
+						if(!productos.get(i).getTitulo().contains(titulo) ){		
+								productos.remove(productos.get(i));
+								i--;	
+						}
+				}
+		}
+		if(descripcion != null){
+			if(productos == null){
+				try {
+					productos = (List<Producto>) pdao.listarProductos();
+				} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+				for(int i = 0; i < productos.size(); i++){	
+						if(!productos.get(i).getDescripcion().contains(descripcion) ){		
+								productos.remove(productos.get(i));
+								i--;	
+						}
+				}
+		}
+		
+			
+			
 		request.setAttribute("productos", productos);
 		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 

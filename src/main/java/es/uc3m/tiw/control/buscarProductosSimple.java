@@ -67,23 +67,24 @@ public class buscarProductosSimple extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String palabra = null;
 		productos = null;
-		List <Producto> aux = null;
 		if(!request.getParameter("palabra").equals("") && request.getParameter("palabra") != null){
 			palabra = request.getParameter("palabra");
 		}
-	
-		
+
 		try {
-			aux = (List<Producto>) pdao.listarProductos();
+			productos = (List<Producto>) pdao.listarProductos();
 		} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 				| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i = 0; i < aux.size(); i++){
-			if(aux.get(i).getDescripcion().contains(palabra) || aux.get(i).getTitulo().contains(palabra)){
-				productos.add(aux.get(i));
+		for(int i = 0; i < productos.size(); i++){
+			if(!productos.get(i).getDescripcion().contains(palabra) && !productos.get(i).getTitulo().contains(palabra) 
+			    ){
+				productos.remove(productos.get(i));
+				i--;
 			}
+			
 		}
 		request.setAttribute("productos", productos);
 		config.getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
