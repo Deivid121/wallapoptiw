@@ -81,7 +81,7 @@ public class buscarProductoCategoria extends HttpServlet {
 		}else {
 			String mensaje = "No hay productos almacenados";
 			request.setAttribute("mensajeError", mensaje);
-			pagina = "/MostrarProductos.jsp"; //modificar el destino
+			pagina = "/mostrarProductosCategoria.jsp"; //modificar el destino
 		}
 		config.getServletContext().getRequestDispatcher(pagina).forward(request, response);
 	}

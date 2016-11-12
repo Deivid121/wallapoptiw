@@ -29,15 +29,13 @@
 				data-toggle="dropdown"> Busqueda avanzada <b class="caret"></b>
 			</a>
 				<ul class="dropdown-menu">
-					<form class="navbar-form navbar-left" role="search">
+					<form class="navbar-form navbar-left" role="search" action ="buscarProducto" method ="post">
 						<div class="form-group ">
-							<input type="text" class="form-control"
-								placeholder="Categoria ..."> <input type="text"
-								class="form-control" placeholder="Ciudad ..."> <input
-								type="text" class="form-control" placeholder="Vendedor ...">
-							<input type="text" class="form-control" placeholder="Titulo ...">
-							<input type="text" class="form-control"
-								placeholder="Descripción ...">
+							<input type="text" class="form-control"	placeholder="Categoria ..." name = "categoria"> 
+							<input type="text" class="form-control" placeholder="Ciudad ..." name = "ciudad"> 
+							<input type="text" class="form-control" placeholder="Vendedor ..." name = "usuario">
+							<input type="text" class="form-control" placeholder="Titulo ..." name = "titulo">
+							<input type="text" class="form-control" placeholder="Cescripcion ..." name = "descripcion">
 						</div>
 						<button type="submit" class="btn btn-default">Buscar</button>
 					</form>

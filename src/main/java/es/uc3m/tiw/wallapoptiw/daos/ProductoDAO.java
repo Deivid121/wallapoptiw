@@ -59,4 +59,8 @@ public interface ProductoDAO {
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
+	Producto buscarProductosCiudad(String ciudad)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
 }

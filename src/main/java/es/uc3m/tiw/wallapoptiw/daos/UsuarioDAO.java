@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -35,5 +36,7 @@ public abstract Usuario actualizarUsuario(Usuario user) throws SQLException, Not
 
 void eliminarUsuario(Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException,
 		IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+Usuario recuperarUnUsuarioNombre(String nombre) throws SQLException;
 
 }
