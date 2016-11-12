@@ -11,43 +11,36 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet Filter implementation class FilterLogin
- */
 @WebFilter(
 		urlPatterns= {"/perfilusuario.jsp","/crearProducto.jsp","/editarUsuario.jsp","/MostrarProductos.jsp"})
-public class FilterLogin implements Filter {
+public class ErrorFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public FilterLogin() {
-        // TODO Auto-generated constructor stub
+  
+    public ErrorFilter() {
+
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
+
 	public void destroy() {
-		// TODO Auto-generated method stub
+
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		// TODO Auto-generated method stub
+		// place your code here
 
+		// pass the request along the filter chain
 		HttpSession sesion =  ((HttpServletRequest)request).getSession(); 
 		//buscamos el token de autenticacion
 		if (sesion.getAttribute("logeado")!=null &&(boolean)sesion.getAttribute("logeado")==true) { 
 			
 			chain.doFilter(request, response); 
 		}else{
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/error404.jsp").forward(request, response);
 		}
+		chain.doFilter(request, response);
 	}
 		
-	
 
 
 	/**

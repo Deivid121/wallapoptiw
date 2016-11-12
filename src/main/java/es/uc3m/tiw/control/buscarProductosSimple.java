@@ -24,8 +24,6 @@ import es.uc3m.tiw.wallapop.dominios.Producto;
 import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAO;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
-import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAO;
-import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
 
 /**
  * Servlet implementation class buscarProductosSimple
@@ -34,7 +32,6 @@ import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
 public class buscarProductosSimple extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Producto> productos = null;
-	private List<Usuario> usuarios;
 	private ProductoDAO pdao;
 	private ServletConfig config;
 	@PersistenceContext(unitName="wallapoptiw")
@@ -71,16 +68,10 @@ public class buscarProductosSimple extends HttpServlet {
 		String palabra = null;
 		productos = null;
 		List <Producto> aux = null;
-		if(!request.getParameter("palabra").equals("") && request.getParameter("palabras") != null){
+		if(!request.getParameter("palabra").equals("") && request.getParameter("palabra") != null){
 			palabra = request.getParameter("palabra");
 		}
-		try {
-			productos = (List<Producto>) pdao.buscarProductoTitulo(palabra);
-		} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
-				| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
 		try {
 			aux = (List<Producto>) pdao.listarProductos();
@@ -90,7 +81,7 @@ public class buscarProductosSimple extends HttpServlet {
 			e.printStackTrace();
 		}
 		for(int i = 0; i < aux.size(); i++){
-			if(aux.get(i).getDescripcion().contains(palabra)){
+			if(aux.get(i).getDescripcion().contains(palabra) || aux.get(i).getTitulo().contains(palabra)){
 				productos.add(aux.get(i));
 			}
 		}
