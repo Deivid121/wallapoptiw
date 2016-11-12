@@ -74,106 +74,35 @@ public class buscarProductoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("titulo") != null){
-			String titulo = request.getParameter("titulo");
-			try{
-				productos = (List<Producto>) pdao.buscarProductoTitulo(titulo);
-			}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
-					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-			if (productos != null) {
-				request.setAttribute("listaProductosTitulo", productos);
-				if(!pagina.equals("error.jsp")){
-					pagina = "/index.jsp";
-				}
-				
-			}else {
-				String mensaje = "No hay productos almacenados";
-				request.setAttribute("mensajeError", mensaje);
-				pagina = "/error.jsp"; //modificar el destino a una pagina de error
-			}
-		}
-		if(request.getParameter("categoria") != null){
-			String categoria = request.getParameter("categoria");
-			try{
-				productos = (List<Producto>) pdao.buscarProductoCategoria(categoria);
-			}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
-					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-			if (productos != null) {
-				request.setAttribute("listaProductosCategoria", productos);
-				if(!pagina.equals("error.jsp")){
-					pagina = "/index.jsp";
-				}
-				
-			}else {
-				String mensaje = "No hay productos almacenados";
-				request.setAttribute("mensajeError", mensaje);
-				pagina = "/error.jsp"; //modificar el destino a una pagina de error
-			}
-		}
-		if(request.getParameter("usuario") != null){
-			// Recogemos el Id del usuario en la sesion
+		String titulo = request.getParameter("titulo");
+		String categoria = request.getParameter("categoria");
+		String descripcion = request.getParameter("descripcion");
+		String ciudad = request.getParameter("ciudad");
+		String usuario = request.getParameter("usuario");
+		if(usuario != null){
 			try {
-				usuarios = (List<Usuario>) udao.recuperarUnUsuarioNombre(request.getParameter("usuario"));
-			} catch (SecurityException | IllegalStateException | SQLException e) {
-				// TODO Auto-generated catch block
+				usuarios = (List<Usuario>)udao.recuperarUnUsuarioNombre(usuario);
+			} catch (SecurityException e) {
 				e.printStackTrace();
-			}
-			// Cargamos la lista de productos buscando por el ID del usuario en la base de datos
-			for(int i = 0; i<usuarios.size(); i++){
-				try{
-					productos = (List<Producto>) pdao.buscarProductoUsuario(usuarios.get(i).getId());
-				}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
-						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-				if (productos != null) {
-					request.setAttribute("listaProductos", productos);
-					if(!pagina.equals("error.jsp")){
-						pagina = "/index.jsp";
-					}
-				}else {
-					String mensaje = "No hay productos almacenados";
-					request.setAttribute("mensajeError", mensaje);
-					pagina = "/MostrarProductos.jsp"; //modificar el destino a una pagina de error
-				}
-			}
-			
-		}
-		if(request.getParameter("usuario") != null){
-			// Recogemos el Id del usuario en la sesion
-			HttpSession sesion = request.getSession();
-			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-			// Cargamos la lista de productos buscando por el ID del usuario en la base de datos
-			try{
-				productos = (List<Producto>) pdao.buscarProductosCiudad(usuario.getCiudad());
-			}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} 
+		for(int i = 0 ; i < usuarios.size() ; i++){
+			try {
+				productos = (List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId());
+				
+			} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-			if (productos != null) {
-				request.setAttribute("listaProductos", productos);
-				if(!pagina.equals("error.jsp")){
-					pagina = "/index.jsp";
-				}
-			}else {
-				String mensaje = "No hay productos almacenados";
-				request.setAttribute("mensajeError", mensaje);
-				pagina = "/MostrarProductos.jsp"; //modificar el destino a una pagina de error
 			}
 		}
 		
+		}
+		
+
 	}
 
 }
