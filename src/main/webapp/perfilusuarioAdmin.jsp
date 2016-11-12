@@ -37,7 +37,7 @@
   </head>
 
   <body>
-	<jsp:include page="menu.jsp" />
+	<jsp:include page="menuadmin.jsp" />
     <div class="container">
       <div class="row row-offcanvas row-offcanvas-right">
         <div class="row">
@@ -66,39 +66,6 @@
               <a href="borrarUsuario" class="btn btn-default">Borrar cuenta</a>
             </div>
           </div>
-          <div class="col-xs-12 col-lg-4">
-              <h2>Heading</h2>
-              <img src="cirujano.jpg" alt="prueba" class="img-rounded">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-12 col-lg-4">
-              <h2>Heading</h2>
-              <img src="cirujano.jpg" alt="prueba" class="img-rounded">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-12 col-lg-4">
-              <h2>Heading</h2>
-              <img src="cirujano.jpg" alt="prueba" class="img-rounded">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
         </div><!--/.row-->
       </div><!--/.offcanvas-->
     </div><!--/.container-->
@@ -106,15 +73,5 @@
     <footer>
       <p>&copy; 2016 Company, Inc.</p>
     </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="offcanvas.js"></script>
   </body>
 </html>

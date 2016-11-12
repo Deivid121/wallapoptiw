@@ -16,7 +16,7 @@
 <title>Editar Usuarios</title>
 </head>
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="menuadmin.jsp" />
 <div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 			<div class="row">
