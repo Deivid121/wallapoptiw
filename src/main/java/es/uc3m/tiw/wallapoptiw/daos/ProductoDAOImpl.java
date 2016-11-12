@@ -96,6 +96,7 @@ public class ProductoDAOImpl implements ProductoDAO {
 		return  consulta.getResultList();
 		
 	}
+
 	@Override
     public Collection<Producto> buscarProductosAvanzada(String titulo,String ciudad, String categoria, String descripcion, int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
         String con = null;
@@ -151,6 +152,7 @@ public class ProductoDAOImpl implements ProductoDAO {
         return  consulta.getResultList();
         
     }
+	
 	@Override
 	public Producto actualizarProducto (Producto prod )throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		

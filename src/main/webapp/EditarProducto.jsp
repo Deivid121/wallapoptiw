@@ -20,7 +20,7 @@
 <div class="container">
 		<div class="row row-offcanvas row-offcanvas-right">
 			<div class="row">
-				<form role="form" action="productoServletAdmin" method="post" id="edituser">
+				<form role="form" action="ProductoServlet" method="post" id="edituser">
 					<div class="form-group">
 						<label>Nombre</label> <input type="text"
 							class="form-control" data-validation="required" data-validation="length" 

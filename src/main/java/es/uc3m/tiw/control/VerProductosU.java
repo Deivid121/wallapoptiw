@@ -22,8 +22,8 @@ import es.uc3m.tiw.wallapoptiw.daos.AdminDAOImpl;
 /**
  * Servlet implementation class VerProductosAdmin
  */
-@WebServlet("/VerProductosAdmin")
-public class VerProductosAdmin extends HttpServlet {
+@WebServlet("/VerProductos")
+public class VerProductosU extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config;
     private AdminDAOImpl dao;
@@ -32,7 +32,7 @@ public class VerProductosAdmin extends HttpServlet {
     @Resource
     private UserTransaction ut;
    
-    public VerProductosAdmin() {
+    public VerProductosU() {
         super();
 
     }
@@ -62,7 +62,7 @@ public class VerProductosAdmin extends HttpServlet {
 		try {
 			Producto prod=dao.recuperarProductoPorClave(Integer.parseInt(id));
 			sesion.setAttribute("producto", prod);
-			config.getServletContext().getRequestDispatcher("/ProductoAdmin.jsp").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/Producto.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
