@@ -47,9 +47,7 @@ public class EditarProductoAdmin extends HttpServlet {
 		doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id= request.getParameter("id");
 		HttpSession sesion = request.getSession();
@@ -57,7 +55,7 @@ public class EditarProductoAdmin extends HttpServlet {
 		try {
 			Producto prod=dao.recuperarProductoPorClave(Integer.parseInt(id));
 			sesion.setAttribute("producto", prod);
-			config.getServletContext().getRequestDispatcher("/editarUsuario.jsp").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/EditarProductoAdmin.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
