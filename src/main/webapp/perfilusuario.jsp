@@ -62,7 +62,7 @@
             </div>
             <div class="list-group-item">
               <a href="/wallapoptiw/editarUsuario.jsp" class="btn btn-default">Editar pefil</a>
-              <a href="#" class="btn btn-default">Administrar productos</a>
+              <a href="MisProductos" class="btn btn-default">Administrar productos</a>
               <a href="borrarUsuario" class="btn btn-default">Borrar cuenta</a>
             </div>
           </div>
@@ -118,4 +118,3 @@
     <script src="offcanvas.js"></script>
   </body>
 </html>
-html>

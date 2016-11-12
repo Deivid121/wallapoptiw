@@ -13,6 +13,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+import es.uc3m.tiw.wallapop.dominios.Producto;
 import es.uc3m.tiw.wallapop.dominios.Usuario;
 
 public class UsuarioDAOImpl implements UsuarioDAO{
@@ -50,6 +51,13 @@ public class UsuarioDAOImpl implements UsuarioDAO{
         return em.find(Usuario.class, pk);
         
     }
+@Override
+public Usuario recuperarUnUsuarioNombre(String nombre) throws SQLException{
+	Query consulta = em.createQuery("select u from Usuario u where u.nombre=:nb", Usuario.class);
+	consulta.setParameter("nb", nombre);
+	return (Usuario) consulta.getResultList().get(0);        
+    }
+
 	@Override
 	public Usuario actualizarUsuario (Usuario user )throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		

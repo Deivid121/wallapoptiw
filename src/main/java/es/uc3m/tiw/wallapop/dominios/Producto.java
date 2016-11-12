@@ -23,6 +23,10 @@ public class Producto {
 	private String categoria;
 	@Column(length = 255, nullable = true)
 	private String descripcion;
+	@Column(length = 30, nullable = true)
+	private String estado;
+	@Column(length = 30, nullable = true)
+	private String ciudad;
 	@Column()	
 	@Lob
 	private String imagen;
@@ -31,7 +35,7 @@ public class Producto {
 	@Column(nullable = true)
 	private int usuario;
 	
-	public Producto(String titulo, String categoria, String descripcion, String imagen, int precio, int usuario) {
+	public Producto(String titulo, String categoria, String descripcion, String imagen, int precio, int usuario, String ciudad, String estado) {
 		super();
 		this.titulo = titulo;
 		this.categoria = categoria;
@@ -39,6 +43,8 @@ public class Producto {
 		this.imagen = imagen;
 		this.precio = precio;
 		this.usuario = usuario;
+		this.ciudad = ciudad;
+		this.estado = estado;
 	}
 	
 	public Producto() {
@@ -86,6 +92,22 @@ public class Producto {
 	}
 	public void setUsuario(int usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
 	}
 	
 	
