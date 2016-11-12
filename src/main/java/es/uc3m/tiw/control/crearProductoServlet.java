@@ -40,7 +40,6 @@ import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
  */
 @WebServlet("/crearProducto")
 @MultipartConfig(location = "./../../../eclipseApps/wallapoptiw/imagenes")
-///home/tiw/Desktop/wallapoptiw/src/main/webapp/imagenes
 public class crearProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static Producto p;
@@ -100,11 +99,12 @@ public class crearProductoServlet extends HttpServlet {
 		 * Utilizamos el nombre del fichero para guardarlo en la base de datos
 		 * IMPORTANTE: estamos guardando el nombre del fichero, no la URL completa
 		 */
-		p.setImagen(fileName);
+		String nombreImagen = u.getId() + fileName;
+		p.setImagen(nombreImagen);
 		/*
 		 * Creamos un fichero con el nombre del fichero, incluyendo el tipo (png,jpg...)
 		 */
-		File imagen = new File("./../eclipseApps/wallapoptiw/imagenes/"+fileName);
+		File imagen = new File("./../eclipseApps/wallapoptiw/imagenes/"+nombreImagen);
 		/*
 		 * Utilizamos el contenido de la "parte" recuperada para "llenar" el fichero que acabamos de crear
 		 */
