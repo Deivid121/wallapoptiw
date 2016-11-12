@@ -44,7 +44,7 @@ public class eliminarProducto extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    public void init() throws ServletException {
+    public void init(ServletConfig config) throws ServletException {
     	this.config = config;
    		pdao = new ProductoDAOImpl();
    		pdao.setConexion(em);

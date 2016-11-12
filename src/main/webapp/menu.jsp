@@ -33,7 +33,7 @@
 						<div class="form-group ">
 							<input type="text" class="form-control"	placeholder="Categoria ..." name = "categoria"> 
 							<input type="text" class="form-control" placeholder="Ciudad ..." name = "ciudad"> 
-							<input type="text" class="form-control" placeholder="Vendedor ..." name = "usuario">
+							<input type="text" class="form-control" placeholder="Vendedor ..." name = "vendedor">
 							<input type="text" class="form-control" placeholder="Titulo ..." name = "titulo">
 							<input type="text" class="form-control" placeholder="Cescripcion ..." name = "descripcion">
 						</div>

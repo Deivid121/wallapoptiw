@@ -124,7 +124,7 @@ public class crearProductoServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String pagina = "/recuperarProducto";
+		String pagina = "/MisProductos";
 		config.getServletContext().getRequestDispatcher(pagina).forward(request, response);
 		
 		
