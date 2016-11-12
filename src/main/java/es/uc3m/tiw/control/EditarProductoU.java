@@ -20,10 +20,10 @@ import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.AdminDAOImpl;
 
 /**
- * Servlet implementation class VerProductosAdmin
+ * Servlet implementation class EditarProductoAdmin
  */
-@WebServlet("/VerProductosAdmin")
-public class VerProductosAdmin extends HttpServlet {
+@WebServlet("/EditarProductoU")
+public class EditarProductoU extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config;
     private AdminDAOImpl dao;
@@ -32,7 +32,7 @@ public class VerProductosAdmin extends HttpServlet {
     @Resource
     private UserTransaction ut;
    
-    public VerProductosAdmin() {
+    public EditarProductoU() {
         super();
 
     }
@@ -43,18 +43,11 @@ public class VerProductosAdmin extends HttpServlet {
    		dao.setEm(em);
    		dao.setUt(ut);
    	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-			doPost(request,response);
+		doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id= request.getParameter("id");
 		HttpSession sesion = request.getSession();
@@ -62,7 +55,7 @@ public class VerProductosAdmin extends HttpServlet {
 		try {
 			Producto prod=dao.recuperarProductoPorClave(Integer.parseInt(id));
 			sesion.setAttribute("producto", prod);
-			config.getServletContext().getRequestDispatcher("/ProductoAdmin.jsp").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/EditarProducto.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

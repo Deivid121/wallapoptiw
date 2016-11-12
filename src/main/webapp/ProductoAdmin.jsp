@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,36 +38,38 @@
 
   <body>
 	<jsp:include page="menu.jsp" />
-    
-    	 <table class="table table-hover">
-			<tr>
-				<th>Id</th>
-				<th>Titulo</th>
-				<th>Categoría</th>
-				<th>Descripción</th>
-				<th>Precio</th>
-				<th>Imagen1</th>
-				<th>Imagen</th>
-				<th>Opciones</th>
-			</tr>
-<c:forEach items="${productos}" var="producto"> <!-- recorremos todos los objetos de la coleccion usuarios y cada objeto devuelto lo asignamos a la variable usuario -->
-		<tr>
-		<form>
-			<td>${producto.id }</td> 
-			<td>${producto.titulo }</td> 
-			<td>${producto.categoria }</td>
-			<td>${producto.descripcion }</td>
-			<td>${producto.precio }</td>
-			<td>${producto.imagen }</td>
-			<td><img src = "./imagenes/${producto.imagen }" width ="25" height="25"></td>
-		
-			<td>
-			<a href="VerProductos?id=${producto.id }"><span class="glyphicon glyphicon-tag"></span></a>
-			<a href="EditarProductoU?id=${producto.id}"><span class="glyphicon glyphicon-edit"></span></a>
-			<a href="eliminarProductoClaveU?id=${producto.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
-		</form>
-	</tr>
-	</c:forEach>
+    <div class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="row">
+          <div class="list-group">
+            <div class="list-group-item">
+              <h4>Nombre del Producto  </h4>${sessionScope.producto.titulo}
+            </div>
+            <div class="list-group-item">
+              <h4>Categoría  </h4>${sessionScope.producto.categoria}
+            </div>
+            <div class="list-group-item">
+              <h4>Descripción </h4>${sessionScope.producto.descripcion}
+            </div>
+            <div class="list-group-item">
+              <h4>Estado </h4>${sessionScope.producto.estado}
+            </div>
+            <div class="list-group-item">
+              <h4>Precio  </h4>${sessionScope.producto.precio}
+            </div>
+            <div class="list-group-item">
+              <h4>Imagen  </h4>${sessionScope.producto.imagen}
+            </div>
+            <div class="list-group-item">
+              <a href="/wallapoptiw/EditarProductoAdmin.jsp" class="btn btn-default">Editar Producto</a>
+              <a href="#" class="btn btn-default">Cambiar estado del producto</a>
+              
+            </div>
+          </div>
+        </div><!--/.row-->
+      </div><!--/.offcanvas-->
+    </div><!--/.container-->
+    <hr>
     <footer>
       <p>&copy; 2016 Company, Inc.</p>
     </footer>
@@ -84,3 +85,4 @@
     <script src="offcanvas.js"></script>
   </body>
 </html>
+html>

@@ -34,7 +34,7 @@ import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
 /**
  * Servlet implementation class usuarioServlet
  */
-@WebServlet("/productoServlet")
+@WebServlet("/ProductoServlet")
 public class ProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config; 
@@ -69,6 +69,8 @@ public class ProductoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//int id = Integer.parseInt(request.getParameter("id"));
+		//Producto prod=dao.buscarProductoClave(id);
 		Producto prod;
 		HttpSession sesion = request.getSession();
 		
@@ -77,13 +79,14 @@ public class ProductoServlet extends HttpServlet {
 		prod.setCategoria(request.getParameter("categoria"));
 		prod.setDescripcion(request.getParameter("descripcion"));
 		prod.setPrecio(Integer.parseInt(request.getParameter("precio")));
+		prod.setEstado(request.getParameter("estado"));
 		//prod.setImagen(request.getParameter("imagen"));
 		
 		
 		
 		try {
 			sesion.setAttribute("producto", dao.actualizarProducto(prod));
-			config.getServletContext().getRequestDispatcher("/AdminPanel").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/Producto.jsp").forward(request, response);
 		} catch (SQLException | SecurityException | IllegalStateException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SystemException | NotSupportedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

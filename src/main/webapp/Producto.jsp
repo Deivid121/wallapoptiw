@@ -52,13 +52,16 @@
               <h4>Descripción </h4>${sessionScope.producto.descripcion}
             </div>
             <div class="list-group-item">
+              <h4>Estado </h4>${sessionScope.producto.estado}
+            </div>
+            <div class="list-group-item">
               <h4>Precio  </h4>${sessionScope.producto.precio}
             </div>
             <div class="list-group-item">
               <h4>Imagen  </h4>${sessionScope.producto.imagen}
             </div>
             <div class="list-group-item">
-              <a href="/wallapoptiw/EditarProductoAdmin.jsp" class="btn btn-default">Editar Producto</a>
+              <a href="/wallapoptiw/EditarProducto.jsp" class="btn btn-default">Editar Producto</a>
               <a href="#" class="btn btn-default">Cambiar estado del producto</a>
               
             </div>

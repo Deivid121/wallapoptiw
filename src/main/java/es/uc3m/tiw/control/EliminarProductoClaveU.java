@@ -24,10 +24,10 @@ import es.uc3m.tiw.wallapoptiw.daos.ProductoDAO;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
 
 /**
- * Servlet implementation class eliminarProducto
+ * Servlet implementation class eliminarProductoClave
  */
-@WebServlet("/eliminarProducto")
-public class eliminarProducto extends HttpServlet {
+@WebServlet("/eliminarProductoClaveU")
+public class EliminarProductoClaveU extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Producto producto;
 	private ProductoDAO pdao;
@@ -37,10 +37,11 @@ public class eliminarProducto extends HttpServlet {
     EntityManager em;
     @Resource
     UserTransaction ut;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public eliminarProducto() {
+    public EliminarProductoClaveU() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -62,26 +63,17 @@ public class eliminarProducto extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			producto = (Producto) request.getAttribute("producto");
-			try{
-				 pdao.eliminarProducto(producto);
-			}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
-					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-			if (producto != null) {
-				String mensaje = "Producto eliminado con exito";
-				request.setAttribute("mensajeError",mensaje);
-				pagina = "/MostrarProductos.jsp";
-			}else {
-				String mensaje = "Dicho producto no está almacenado en la base de datos";
-				request.setAttribute("mensajeError", mensaje);
-				pagina = "/MostrarProductos.jsp"; //modificar el destino a una pagina de error
-			}
-			config.getServletContext().getRequestDispatcher(pagina).forward(request, response);
+		int clave  = Integer.parseInt(request.getParameter("id"));
+		try{
+			producto = pdao.buscarProductoClave(clave);
+			 pdao.eliminarProducto(producto);
+		}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+				| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		config.getServletContext().getRequestDispatcher("/MisProductos").forward(request, response);
 	}
 
 }
