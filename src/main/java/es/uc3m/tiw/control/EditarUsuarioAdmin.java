@@ -59,7 +59,7 @@ public class EditarUsuarioAdmin extends HttpServlet {
 		try {
 			Usuario user=dao.recuperarUsuarioPorClave(Integer.parseInt(id));
 			sesion.setAttribute("usuario", user);
-			config.getServletContext().getRequestDispatcher("/editarUsuario.jsp").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/editarUsuarioAdmin.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
