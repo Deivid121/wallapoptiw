@@ -13,6 +13,7 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 import es.uc3m.tiw.wallapop.dominios.Producto;
+import es.uc3m.tiw.wallapop.dominios.Usuario;
 
 public interface ProductoDAO {
 
@@ -58,5 +59,10 @@ public interface ProductoDAO {
 	void eliminarProductoClave(int clave)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
+	Producto actualizarProducto(Producto prod)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
 
 }

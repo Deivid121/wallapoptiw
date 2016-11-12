@@ -14,6 +14,7 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 import es.uc3m.tiw.wallapop.dominios.Producto;
+import es.uc3m.tiw.wallapop.dominios.Usuario;
 
 public class ProductoDAOImpl implements ProductoDAO {
 
@@ -88,6 +89,20 @@ public class ProductoDAOImpl implements ProductoDAO {
 		consulta.setParameter("us", usuario);
 		return (Producto) consulta.getResultList().get(0);
 		
+	}
+	@Override
+	public Producto actualizarProducto (Producto prod )throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		
+		ut.begin();
+
+		em.merge(prod);
+		
+		ut.commit();
+		
+		
+		return buscarProductoClave(prod.getId());
+	
+	
 	}
 	@Override
 	public void setConexion(EntityManager em) {

@@ -58,9 +58,9 @@
               <h4>Imagen  </h4>${sessionScope.producto.imagen}
             </div>
             <div class="list-group-item">
-              <a href="/wallapoptiw/editarUsuario.jsp" class="btn btn-default">Editar Producto</a>
+              <a href="/wallapoptiw/EditarProductoAdmin.jsp" class="btn btn-default">Editar Producto</a>
               <a href="#" class="btn btn-default">Cambiar estado del producto</a>
-              <a href="eliminarProducto" class="btn btn-default">Borrar producto</a>
+              
             </div>
           </div>
         </div><!--/.row-->

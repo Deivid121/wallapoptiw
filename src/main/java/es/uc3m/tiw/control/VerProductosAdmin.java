@@ -62,7 +62,7 @@ public class VerProductosAdmin extends HttpServlet {
 		try {
 			Producto prod=dao.recuperarProductoPorClave(Integer.parseInt(id));
 			sesion.setAttribute("producto", prod);
-			config.getServletContext().getRequestDispatcher("/producto.jsp").forward(request, response);
+			config.getServletContext().getRequestDispatcher("/Producto.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
