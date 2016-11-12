@@ -39,21 +39,13 @@ public class ProductoDAOImpl implements ProductoDAO {
 		ut.commit();
 	}
 	@Override
-	public Producto buscarProductoTitulo(String titulo) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+	public Collection<Producto> buscarProductoTitulo(String titulo) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		Query consulta = em.createQuery("select p from Producto p where p.titulo=:titulo", Producto.class);
 		consulta.setParameter("titulo", titulo);
-		return (Producto) consulta.getResultList().get(0);
+		return consulta.getResultList();
 		
 	}
-	@Override
-	public void eliminarProductoTitulo(String titulo) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
-		Query consulta = em.createQuery("select p from Producto p where p.titulo=:titulo", Producto.class);
-		consulta.setParameter("titulo", titulo);
-		Producto producto = (Producto) consulta.getResultList().get(0);
-		ut.begin();
-		em.remove(em.merge(producto));
-		ut.commit();
-	}
+	
 	@Override
 	public void eliminarProductoClave(int clave) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		Query consulta = em.createQuery("select p from Producto p where p.id=:pk", Producto.class);
@@ -76,24 +68,24 @@ public class ProductoDAOImpl implements ProductoDAO {
 	}
 	
 	@Override
-	public Producto buscarProductoCategoria(String categoria) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+	public Collection<Producto> buscarProductoCategoria(String categoria) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		Query consulta = em.createQuery("select p from Producto p where p.categoria=:cat", Producto.class);
 		consulta.setParameter("cat", categoria);
-		return (Producto) consulta.getResultList().get(0);
+		return consulta.getResultList();
 		
 	}
 	@Override
-	public Producto buscarProductoUsuario(int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+	public Collection<Producto> buscarProductoUsuario(int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		Query consulta = em.createQuery("select p from Producto p where p.usuario=:us", Producto.class);
 		consulta.setParameter("us", usuario);
-		return (Producto) consulta.getResultList();
+		return  consulta.getResultList();
 		
 	}
 	@Override
-	public Producto buscarProductosCiudad(String ciudad) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+	public Collection<Producto> buscarProductosCiudad(String ciudad) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
 		Query consulta = em.createQuery("select p from Producto p where p.ciudad=:cd", Producto.class);
 		consulta.setParameter("cd", ciudad);
-		return (Producto) consulta.getResultList().get(0);
+		return  consulta.getResultList();
 		
 	}
 	@Override

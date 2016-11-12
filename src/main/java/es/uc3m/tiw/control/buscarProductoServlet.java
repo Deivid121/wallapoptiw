@@ -25,6 +25,8 @@ import es.uc3m.tiw.wallapop.dominios.Producto;
 import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAO;
 import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
+import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAO;
+import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
 
 /**
  * Servlet implementation class buscarProductoServlet
@@ -33,7 +35,9 @@ import es.uc3m.tiw.wallapoptiw.daos.ProductoDAOImpl;
 public class buscarProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Producto> productos;
+	private List<Usuario> usuarios;
 	private ProductoDAO pdao;
+	private UsuarioDAO udao;
 	private String pagina;
 	private ServletConfig config;
 	@PersistenceContext(unitName="wallapoptiw")
@@ -53,6 +57,9 @@ public class buscarProductoServlet extends HttpServlet {
    		pdao = new ProductoDAOImpl();
    		pdao.setConexion(em);
    		pdao.setTransaction(ut);
+   		udao = new UsuarioDAOImpl();
+   		udao.setConexion(em);
+   		udao.setTransaction(ut);
     }
 
 	/**
@@ -113,28 +120,34 @@ public class buscarProductoServlet extends HttpServlet {
 		}
 		if(request.getParameter("usuario") != null){
 			// Recogemos el Id del usuario en la sesion
-			HttpSession sesion = request.getSession();
-			Usuario usuario = (Usuario) sesion.getAttribute("usuario");
-			// Cargamos la lista de productos buscando por el ID del usuario en la base de datos
-			
-			try{
-				productos = (List<Producto>) pdao.buscarProductoUsuario(usuario.getId());
-			}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
-					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+			try {
+				usuarios = (List<Usuario>) udao.recuperarUnUsuarioNombre(request.getParameter("usuario"));
+			} catch (SecurityException | IllegalStateException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
-			if (productos != null) {
-				request.setAttribute("listaProductos", productos);
-				if(!pagina.equals("error.jsp")){
-					pagina = "/index.jsp";
+			// Cargamos la lista de productos buscando por el ID del usuario en la base de datos
+			for(int i = 0; i<usuarios.size(); i++){
+				try{
+					productos = (List<Producto>) pdao.buscarProductoUsuario(usuarios.get(i).getId());
+				}catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
+						| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			}else {
-				String mensaje = "No hay productos almacenados";
-				request.setAttribute("mensajeError", mensaje);
-				pagina = "/MostrarProductos.jsp"; //modificar el destino a una pagina de error
+				// Cargamos en "pagina" una dirección para redirigir, tanto si ha ido bien como si ha habido algún error
+				if (productos != null) {
+					request.setAttribute("listaProductos", productos);
+					if(!pagina.equals("error.jsp")){
+						pagina = "/index.jsp";
+					}
+				}else {
+					String mensaje = "No hay productos almacenados";
+					request.setAttribute("mensajeError", mensaje);
+					pagina = "/MostrarProductos.jsp"; //modificar el destino a una pagina de error
+				}
 			}
+			
 		}
 		if(request.getParameter("usuario") != null){
 			// Recogemos el Id del usuario en la sesion

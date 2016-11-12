@@ -27,19 +27,16 @@ public interface ProductoDAO {
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
-	Producto buscarProductoTitulo(String titulo)
+	Collection<Producto> buscarProductoTitulo(String titulo)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
-	void eliminarProductoTitulo(String titulo)
-			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
-			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
 	Collection<Producto> listarProductos() throws SQLException, NotSupportedException, SystemException, SecurityException,
 			IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
 
-	Producto buscarProductoCategoria(String categoria)
+	Collection<Producto> buscarProductoCategoria(String categoria)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
@@ -47,7 +44,7 @@ public interface ProductoDAO {
 
 	void setConexion(EntityManager em);
 
-	Producto buscarProductoUsuario(int usuario)
+	Collection<Producto> buscarProductoUsuario(int usuario)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
@@ -59,7 +56,7 @@ public interface ProductoDAO {
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
-	Producto buscarProductosCiudad(String ciudad)
+	Collection<Producto> buscarProductosCiudad(String ciudad)
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
