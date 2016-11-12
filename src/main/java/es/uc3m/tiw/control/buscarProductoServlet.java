@@ -34,7 +34,7 @@ import es.uc3m.tiw.wallapoptiw.daos.UsuarioDAOImpl;
 @WebServlet("/buscarProducto")
 public class buscarProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<Producto> productos;
+	private List<Producto> productos = null;
 	private List<Usuario> usuarios;
 	private ProductoDAO pdao;
 	private UsuarioDAO udao;
@@ -91,8 +91,7 @@ public class buscarProductoServlet extends HttpServlet {
 			} 
 		for(int i = 0 ; i < usuarios.size() ; i++){
 			try {
-				productos = (List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId());
-				
+				productos.addAll((List<Producto>) pdao.buscarProductosAvanzada(titulo, ciudad, categoria, descripcion, usuarios.get(i).getId()));
 			} catch (SecurityException | IllegalStateException | SQLException | NotSupportedException | SystemException
 					| RollbackException | HeuristicMixedException | HeuristicRollbackException e) {
 				// TODO Auto-generated catch block
