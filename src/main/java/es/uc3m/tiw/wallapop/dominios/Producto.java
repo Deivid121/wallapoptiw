@@ -17,11 +17,11 @@ public class Producto {
 	@Id
 	@GeneratedValue(strategy = AUTO)
 	private int id;
-	@Column(length = 30, nullable = false,unique = true)
+	@Column(length = 30, nullable = false)
 	private String titulo;
 	@Column(length = 30, nullable = false)
 	private String categoria;
-	@Column(length = 255, nullable = false)
+	@Column(length = 500, nullable = false)
 	private String descripcion;
 	@Column(length = 30, nullable = false)
 	private String estado;

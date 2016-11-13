@@ -2,6 +2,7 @@ package es.uc3m.tiw.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -20,6 +21,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+import es.uc3m.tiw.wallapop.dominios.Producto;
 import es.uc3m.tiw.wallapop.dominios.Usuario;
 import es.uc3m.tiw.wallapoptiw.daos.AdminDAOImpl;
 
@@ -62,6 +64,10 @@ public class BorrarUsuarioAdmin extends HttpServlet {
 		
 		try {
 			Usuario user = dao.recuperarUsuarioPorClave(Integer.parseInt(id));
+			List <Producto> productos = (List<Producto>) dao.buscarProductoUsuario(user.getId());
+			for(int i = 0; i< productos.size(); i++){
+				dao.eliminarProducto(productos.get(i));
+			}
 			dao.eliminarUsuario(user);
 			config.getServletContext().getRequestDispatcher("/AdminPanel").forward(request, response);
 		} catch (SQLException e) {

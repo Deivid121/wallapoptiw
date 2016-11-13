@@ -42,6 +42,10 @@ public interface AdminDAO {
 			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
 			RollbackException, HeuristicMixedException, HeuristicRollbackException;
 
+	Collection<Producto> buscarProductoUsuario(int usuario)
+			throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException,
+			RollbackException, HeuristicMixedException, HeuristicRollbackException;
+
 
 	
 	

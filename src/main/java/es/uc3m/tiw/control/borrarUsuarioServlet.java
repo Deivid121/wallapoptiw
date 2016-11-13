@@ -2,6 +2,7 @@ package es.uc3m.tiw.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -31,6 +32,7 @@ public class borrarUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ServletConfig config; 
     private UsuarioDAO dao;
+    private ProductoDAO pdao;
 	@PersistenceContext(unitName="wallapoptiw")
 	private EntityManager em;
 	@Resource
@@ -46,6 +48,9 @@ public class borrarUsuarioServlet extends HttpServlet {
     	dao= new UsuarioDAOImpl();
     	dao.setConexion(em);
     	dao.setTransaction(ut);
+    	pdao= new ProductoDAOImpl();
+    	pdao.setConexion(em);
+    	pdao.setTransaction(ut);
     	
     }
 
@@ -65,6 +70,10 @@ public class borrarUsuarioServlet extends HttpServlet {
 		HttpSession sesion= request.getSession();
 		Usuario user = (Usuario)sesion.getAttribute("usuario");
 		try {
+			List <Producto> productos = (List<Producto>) pdao.buscarProductoUsuario(user.getId());
+			for(int i = 0; i < productos.size(); i++){
+				pdao.eliminarProducto(productos.get(i));
+			}
 			dao.eliminarUsuario(user);
 			sesion.invalidate();
 			config.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);

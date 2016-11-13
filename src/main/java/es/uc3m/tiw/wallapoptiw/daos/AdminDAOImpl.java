@@ -64,6 +64,13 @@ public class AdminDAOImpl implements AdminDAO{
 		return  consulta.getResultList();
 		
 	}
+	@Override
+	public Collection<Producto> buscarProductoUsuario(int usuario) throws SQLException, NotSupportedException, SystemException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
+		Query consulta = em.createQuery("select p from Producto p where p.usuario=:us", Producto.class);
+		consulta.setParameter("us", usuario);
+		return  consulta.getResultList();
+		
+	}
 	
 	@Override
 	public void eliminarUsuario (Usuario user) throws NotSupportedException, SystemException, SQLException, SecurityException, IllegalStateException, RollbackException, HeuristicMixedException, HeuristicRollbackException{
