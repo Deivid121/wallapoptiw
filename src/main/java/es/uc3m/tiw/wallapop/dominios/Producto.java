@@ -21,18 +21,18 @@ public class Producto {
 	private String titulo;
 	@Column(length = 30, nullable = false)
 	private String categoria;
-	@Column(length = 255, nullable = true)
+	@Column(length = 255, nullable = false)
 	private String descripcion;
-	@Column(length = 30, nullable = true)
+	@Column(length = 30, nullable = false)
 	private String estado;
-	@Column(length = 30, nullable = true)
+	@Column(length = 30, nullable = false)
 	private String ciudad;
-	@Column()	
+	@Column(nullable = false)	
 	@Lob
 	private String imagen;
 	@Column(nullable = true)
 	private int precio;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private int usuario;
 	
 	public Producto(String titulo, String categoria, String descripcion, String imagen, int precio, int usuario, String ciudad, String estado) {

@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import static javax.persistence.GenerationType.AUTO;
 
+import javax.persistence.Column;
+
 
 @Entity
 @Table(name="ADMINISTRADOR")
@@ -13,11 +15,17 @@ public class Administrador {
 	@Id	
 	@GeneratedValue(strategy = AUTO)
 	private int idadmin;
+	@Column(length = 30, nullable = false)
 	private String nombre;
+	@Column(length = 30, nullable = false)
 	private String apellido1;
+	@Column(length = 30, nullable = true)
 	private String apellido2;
+	@Column(length = 100, nullable = false,unique = true)
 	private String email;
+	@Column(length = 30, nullable = false)
 	private String password;
+	@Column(length = 30, nullable = false)
 	private String ciudad;
 
 	public Administrador() {

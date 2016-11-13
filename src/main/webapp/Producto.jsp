@@ -49,7 +49,7 @@
             </div>
             <div class="list-group-item">
               <a href="/wallapoptiw/EditarProducto.jsp" class="btn btn-default">Editar Producto</a>
-              <a href="#" class="btn btn-default">Cambiar estado del producto</a>
+              
               
             </div>
           </div>
